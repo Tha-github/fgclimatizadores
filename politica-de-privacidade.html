@@ -8,13 +8,15 @@
   <meta name="description" content="Como o site da FG Climatizadores trata as informações dos visitantes: sem cookies, sem rastreamento e sem armazenamento de dados no site.">
   <meta name="theme-color" content="#0A1A36">
   <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; connect-src &#39;self&#39;; manifest-src &#39;self&#39;; form-action &#39;self&#39;; base-uri &#39;self&#39;; object-src &#39;none&#39;">
+  <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39; https://topsitebr.com.br; style-src &#39;self&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; connect-src &#39;self&#39; https://topsitebr.com.br; manifest-src &#39;self&#39;; form-action &#39;self&#39;; base-uri &#39;self&#39;; object-src &#39;none&#39;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="canonical" href="https://SEU-DOMINIO.com.br/politica-de-privacidade.html">
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/icons/icon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <!-- Favicon e ícones (assets/icons/, gerados a partir do logotipo) -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -57,17 +59,26 @@
     <article class="container container--sm prose">
       <span class="eyebrow">Privacidade</span>
       <h1 class="section-heading__title">Política de privacidade</h1>
-      <p class="text-muted">Última atualização: 1º de outubro de 2026.</p>
+      <p class="text-muted">Última atualização: 2 de outubro de 2026.</p>
 
-      <p>Esta página explica como o site da FG Climatizadores trata as informações de quem o visita. O resumo é simples: <strong>o site não coleta, não armazena e não rastreia dados pessoais</strong>.</p>
+      <p>Esta página explica como o site da FG Climatizadores trata as informações de quem o visita. O resumo: <strong>o site não pede nem armazena dados pessoais</strong> e usa apenas um contador de visitas para estatísticas de audiência.</p>
 
       <h2>O que o site não faz</h2>
       <ul>
         <li>Não usa cookies.</li>
-        <li>Não usa ferramentas de análise de audiência, pixels de anúncios ou rastreamento.</li>
-        <li>Não carrega fontes, scripts ou outros recursos de serviços de terceiros durante a navegação.</li>
+        <li>Não usa pixels de anúncios nem ferramentas de rastreamento publicitário.</li>
         <li>Não armazena em servidor nenhuma informação digitada nas páginas.</li>
       </ul>
+
+      <h2>Estatísticas de visitas</h2>
+      <p>O site usa o contador de visitas <strong>TopSite BR</strong> para saber quantas pessoas acessam as páginas e de onde vêm. A cada visita, ele registra:</p>
+      <ul>
+        <li>a página acessada;</li>
+        <li>o site de origem, quando você chega por um link de outro site;</li>
+        <li>um código aleatório da visita, guardado no seu navegador apenas enquanto a aba estiver aberta (não é um cookie).</li>
+      </ul>
+      <p>O contador não coleta nome, e-mail, telefone nem o que você digita nas páginas. Como acontece em qualquer acesso a um servidor na internet, o serviço também recebe dados técnicos da conexão, como o endereço IP e o tipo de navegador. Essas informações são usadas somente para estatísticas de audiência do site.</p>
+      <p>Fora esse contador, o site não carrega scripts, fontes ou outros recursos de terceiros durante a navegação.</p>
 
       <h2>Formulário “Monte sua mensagem”</h2>
       <p>O formulário da seção de contato apenas organiza, no seu próprio navegador, o texto da mensagem. Ao clicar em “Enviar pelo WhatsApp”, o WhatsApp é aberto com esse texto já preenchido, e <strong>o envio só acontece se você confirmar a mensagem no próprio WhatsApp</strong>. Nada é transmitido ao site.</p>
@@ -93,5 +104,10 @@
     </div>
   </footer>
 
+  <!-- Contador de visitas TopSite BR (estatísticas de audiência). Envia a
+       página visitada, o site de origem e um identificador aleatório da
+       sessão (sessionStorage, sem cookies). Liberado na CSP: script-src e
+       connect-src https://topsitebr.com.br. Descrito na política de privacidade. -->
+  <script src="https://topsitebr.com.br/tracker.js" data-site-id="488ea183-c5d8-416c-aa33-922e60815597" defer></script>
 </body>
 </html>

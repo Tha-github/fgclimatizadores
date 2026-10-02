@@ -9,20 +9,21 @@
   <meta name="theme-color" content="#0A1A36">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
-  <!-- Segurança: só carrega recursos do próprio site (nenhum script, estilo
-       ou fonte de terceiros). frame-ancestors, HSTS e afins vão nos
+  <!-- Segurança: só carrega recursos do próprio site, exceto o contador de
+       visitas TopSite BR (script + envio de estatísticas). frame-ancestors, HSTS e afins vão nos
        cabeçalhos HTTP do servidor (ver _headers / .htaccess). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; connect-src &#39;self&#39;; manifest-src &#39;self&#39;; form-action &#39;self&#39;; base-uri &#39;self&#39;; object-src &#39;none&#39;">
+  <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39; https://topsitebr.com.br; style-src &#39;self&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; connect-src &#39;self&#39; https://topsitebr.com.br; manifest-src &#39;self&#39;; form-action &#39;self&#39;; base-uri &#39;self&#39;; object-src &#39;none&#39;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <!-- URL oficial. "SEU-DOMINIO.com.br" é trocado pelo domínio real com
        node scripts/definir-dominio.js https://www.dominio.com.br (ver README) -->
   <link rel="canonical" href="https://SEU-DOMINIO.com.br/">
 
-  <!-- Ícones (provisórios até o logotipo original — ver assets/favicon.svg) -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/icons/icon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <!-- Favicon e ícones (assets/icons/, gerados a partir do logotipo) -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="site.webmanifest">
 
   <!-- Compartilhamento (WhatsApp, Facebook, LinkedIn, X) -->
@@ -401,7 +402,7 @@
               <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-utensils"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Buffets</h3>
-                <p class="occasion-card__text">Apoio a salões e espaços de festa que querem reforçar a climatização nos dias de evento.</p>
+                <p class="occasion-card__text">Climatização para ambientes abertos, sem ar-condicionado, ou suporte complementar para espaços fechados que já possuem ar-condicionado.</p>
                 <a class="occasion-card__link" href="https://wa.me/5585999210105"
                    data-whatsapp="Olá, FG Climatizadores! Gostaria de consultar a locação de climatizadores para um buffet.&#10;&#10;Cidade:&#10;Data do evento:">
                   Consultar<span class="visually-hidden"> locação para buffets</span>
@@ -739,7 +740,7 @@
             <summary class="faq-item__question">Como solicitar orçamento?<span class="faq-item__icon" aria-hidden="true"></span></summary>
             <div class="faq-item__answer">
               <p>Pelo WhatsApp <a href="https://wa.me/5585999210105" data-whatsapp="Olá, FG Climatizadores! Gostaria de solicitar um orçamento.&#10;&#10;Cidade:&#10;Data do evento:&#10;Tipo de evento:">(85) 99921-0105</a>. Informe a cidade, a data e o tipo de evento, e nossa equipe orienta você sobre as opções.</p>
-              <p>Voc? tamb?m pode falar com a gente pelo Instagram <a href="https://www.instagram.com/fgclimatizadores/" data-instagram>@fgclimatizadores</a>.</p>
+              <p>Você também pode falar com a gente pelo Instagram <a href="https://www.instagram.com/fgclimatizadores/" data-instagram>@fgclimatizadores</a> ou pelo E-mail <a href="mailto:fgclimatizadores@gmail.com">fgclimatizadores@gmail.com</a>.</p>
             </div>
           </details>
 
@@ -1007,5 +1008,10 @@
     </button>
   </dialog>
 
+  <!-- Contador de visitas TopSite BR (estatísticas de audiência). Envia a
+       página visitada, o site de origem e um identificador aleatório da
+       sessão (sessionStorage, sem cookies). Liberado na CSP: script-src e
+       connect-src https://topsitebr.com.br. Descrito na política de privacidade. -->
+  <script src="https://topsitebr.com.br/tracker.js" data-site-id="488ea183-c5d8-416c-aa33-922e60815597" defer></script>
 </body>
 </html>

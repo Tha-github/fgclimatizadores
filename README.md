@@ -17,7 +17,7 @@ Site estático em HTML, CSS e JavaScript puros. Não depende de nenhum serviço 
    - **GitHub Pages:** marque "Enforce HTTPS". Essa hospedagem não aceita cabeçalhos próprios, então vale a CSP do `<meta>` em cada página.
 4. **Arquivos a não publicar:** `styleguide.html`, `css/styleguide.css`, `README.md`, a pasta `scripts/` e os `*.md` de `assets/`. O `.htaccess` já bloqueia esses caminhos, mas o ideal é não enviá-los.
 5. **Conteúdo provisório:** busque `TROCAR AQUI` e confira os `CREDITOS.md` (fotos provisórias) e o `assets/logo/LEIA-ME.md`.
-6. **Privacidade:** a política descreve o site como ele é hoje, sem cookies e sem rastreamento. Se entrar analytics, pixel, mapa incorporado ou formulário com envio a servidor, **atualize a política e a CSP antes**.
+6. **Privacidade:** a política descreve o site como ele é hoje: sem cookies, com o contador de visitas TopSite BR. Se entrar outro analytics, pixel, mapa incorporado ou formulário com envio a servidor, **atualize a política e a CSP antes**.
 7. **Google:** depois de publicar, envie o `sitemap.xml` no Google Search Console.
 
 ## Estrutura
@@ -55,7 +55,8 @@ scripts/
   definir-dominio.js       ← aplica o domínio real nas URLs absolutas
 assets/
   fonts/                   ← Inter e Plus Jakarta Sans (woff2, licença OFL)
-  favicon.svg, icons/      ← ícones (PROVISÓRIOS: monograma até o logo original)
+  icons/                   ← favicon (16/32 + .ico), apple-touch-icon e ícones Android 192/512
+                             (o favicon.ico também fica na raiz do site, para /favicon.ico)
   logo/                    ← logotipo do cliente (ver LEIA-ME.md; hoje é provisório)
   img/hero|locacao|galeria|sobre ← fotos PROVISÓRIAS do Unsplash (ver CREDITOS.md)
   img/equipamentos/        ← fotos do catálogo + ilustração genérica
@@ -74,10 +75,10 @@ O `styleguide.html` carrega o `css/main.css` direto, então mostra as mudanças 
 
 ## Segurança e privacidade
 
-- **Content-Security-Policy:** o site só carrega recursos de si mesmo, sem scripts, estilos ou fontes de terceiros. Por isso não use `style="…"` nem `<script>` inline no HTML: a CSP bloqueia. Use classes, como os utilitários `.object-y-*` para ajustar o recorte de imagens.
+- **Content-Security-Policy:** o site só carrega recursos de si mesmo. A única exceção é o contador de visitas TopSite BR (`https://topsitebr.com.br`), liberado apenas em `script-src` e `connect-src`. Por isso não use `style="…"` nem `<script>` inline no HTML: a CSP bloqueia. Use classes, como os utilitários `.object-y-*` para ajustar o recorte de imagens.
 - **HTML não confiável:** o JS nunca usa `innerHTML` com dados; textos entram por `textContent`.
 - **Formulário:** não há backend. O formulário só monta a mensagem e abre o WhatsApp, e nada é enviado ou armazenado. Isso elimina spam e vazamento de dados pelo site. **Se um dia houver envio a servidor**, valide tudo no servidor, adicione proteção anti-spam (honeypot e limite de taxa), atualize a política de privacidade e libere o domínio do endpoint em `connect-src` / `form-action`.
-- **Sem cookies, analytics ou rastreamento.** Fontes locais, então nenhum dado do visitante vai para o Google ao carregar a página.
+- **Sem cookies nem rastreamento publicitário.** Há só o contador de visitas TopSite BR (página, origem e um código aleatório da sessão), descrito na política de privacidade. As fontes são locais, então nenhum dado vai para o Google ao carregar a página.
 
 ## Convenções
 
@@ -119,4 +120,4 @@ O botão de cada card abre o WhatsApp com o nome e a referência do equipamento.
 
 ## Logotipo
 
-O logo atual é um **espaço reservado**. O arquivo original deve entrar em `assets/logo/`, sem alterações (ver [assets/logo/LEIA-ME.md](assets/logo/LEIA-ME.md)). Com ele em mãos, gere também o favicon e os ícones de `assets/icons/`, e refaça a `assets/img/og-image.jpg`.
+O logo atual é um **espaço reservado**. O arquivo original deve entrar em `assets/logo/`, sem alterações (ver [assets/logo/LEIA-ME.md](assets/logo/LEIA-ME.md)). Os ícones de `assets/icons/` já são do logotipo; ao trocar o logo, gere-os de novo com os mesmos nomes e refaça a `assets/img/og-image.jpg`.
