@@ -60,6 +60,18 @@ const resultado =
   minificar(partes.join('\n')) + '\n';
 
 fs.writeFileSync(SAIDA, resultado);
+
+// Versão no endereço do CSS (site.css?v=…), calculada pelo conteúdo: a
+// cada mudança o endereço muda e o navegador/hospedagem não serve a cópia
+// antiga do cache.
+const versao = require('crypto').createHash('md5').update(resultado).digest('hex').slice(0, 10);
+['index.html', 'politica-de-privacidade.html', '404.html'].forEach((pagina) => {
+  const caminho = path.join(RAIZ, pagina);
+  if (!fs.existsSync(caminho)) return;
+  const html = fs.readFileSync(caminho, 'utf8');
+  const novo = html.replace(/(css\/site\.css)(\?v=[a-f0-9]+)?"/g, `$1?v=${versao}"`);
+  if (novo !== html) fs.writeFileSync(caminho, novo);
+});
 const kb = (n) => (n / 1024).toFixed(1) + ' KB';
 const original = imports.reduce((s, [, a]) => s + fs.statSync(path.join(path.dirname(ENTRADA), a)).size, 0);
 console.log(`css/site.css gerado: ${imports.length} módulos, ${kb(original)} → ${kb(resultado.length)}`);

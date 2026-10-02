@@ -8,6 +8,12 @@
      fundos claros dentro da seção.
    ============================================ */
 
+/* Fim da seção mais curto: a área de Venda vem logo em seguida, também
+   em fundo branco, e o espaço padrão das duas somado ficava excessivo */
+.rental {
+  padding-bottom: var(--section-space-sm);
+}
+
 /* ---------- Grade ---------- */
 
 .rental__grid {

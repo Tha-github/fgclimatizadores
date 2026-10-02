@@ -3,6 +3,11 @@
    Conteúdo centralizado: título, texto, lista de pontos e CTA.
    ============================================ */
 
+/* Começa colada ao painel "Consulte a locação" (ver .rental em locacao.css) */
+.sale {
+  padding-top: var(--space-4);
+}
+
 .sale__inner {
   display: flex;
   justify-content: center;
@@ -35,6 +40,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  color: var(--color-heading); /* texto padrão sobre fundo branco */
 }
 
 /* Check no mesmo estilo dos selos do site (azul-claro suave + azul-marinho) */
@@ -53,10 +59,10 @@
   justify-content: center;
 }
 
+/* Celular: tópicos um embaixo do outro, centralizados como o resto da seção */
 @media (max-width: 479.98px) {
   .sale__list {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
   }
 }
