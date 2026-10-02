@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 300" role="img" aria-label="Ilustração genérica de climatizador">
+  <!-- ILUSTRAÇÃO GENÉRICA — não representa um modelo real.
+       Usada no catálogo enquanto as fotos dos equipamentos não chegam. -->
+  <defs>
+    <linearGradient id="corpo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E7EEF6"/>
+    </linearGradient>
+    <linearGradient id="grade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0F8FD"/>
+      <stop offset="1" stop-color="#DDF0FA"/>
+    </linearGradient>
+    <linearGradient id="agua" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#86CDEF"/>
+      <stop offset="1" stop-color="#4BB3E5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sombra -->
+  <ellipse cx="120" cy="286" rx="78" ry="8" fill="#0A1A36" opacity="0.12"/>
+
+  <!-- fluxo de ar -->
+  <g fill="none" stroke="#4BB3E5" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9" opacity="0.8">
+    <path d="M196 104 C 216 96, 228 112, 252 102"/>
+    <path d="M196 132 C 218 124, 232 142, 256 130"/>
+    <path d="M196 160 C 216 152, 228 168, 252 158"/>
+  </g>
+
+  <!-- corpo -->
+  <rect x="44" y="28" width="152" height="246" rx="22" fill="url(#corpo)" stroke="#C3CEDB" stroke-width="2"/>
+
+  <!-- painel de controle -->
+  <rect x="58" y="42" width="124" height="28" rx="10" fill="#0F2A52"/>
+  <circle cx="76" cy="56" r="5" fill="#4BB3E5"/>
+  <circle cx="94" cy="56" r="5" fill="#86CDEF" opacity="0.7"/>
+  <rect x="134" y="51" width="34" height="10" rx="5" fill="#163A6D"/>
+
+  <!-- grade frontal com aletas -->
+  <rect x="60" y="84" width="120" height="116" rx="12" fill="url(#grade)" stroke="#BAE2F6" stroke-width="2"/>
+  <g stroke="#86CDEF" stroke-width="4" stroke-linecap="round">
+    <line x1="74" y1="102" x2="166" y2="102"/>
+    <line x1="74" y1="116" x2="166" y2="116"/>
+    <line x1="74" y1="130" x2="166" y2="130"/>
+    <line x1="74" y1="144" x2="166" y2="144"/>
+    <line x1="74" y1="158" x2="166" y2="158"/>
+    <line x1="74" y1="172" x2="166" y2="172"/>
+    <line x1="74" y1="186" x2="166" y2="186"/>
+  </g>
+
+  <!-- reservatório de água -->
+  <rect x="60" y="212" width="120" height="46" rx="12" fill="#F6F8FB" stroke="#DCE3EC" stroke-width="2"/>
+  <rect x="68" y="232" width="104" height="18" rx="6" fill="url(#agua)" opacity="0.85"/>
+  <path d="M120 218 c 0 0 -6 7 -6 11 a 6 6 0 0 0 12 0 c 0 -4 -6 -11 -6 -11z" fill="#1F98D3"/>
+
+  <!-- rodízios -->
+  <circle cx="72" cy="278" r="8" fill="#334155"/>
+  <circle cx="168" cy="278" r="8" fill="#334155"/>
+</svg>

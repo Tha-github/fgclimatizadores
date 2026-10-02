@@ -1,0 +1,202 @@
+/* ============================================
+   Product card — equipamento do catálogo
+   Estrutura (ver <template id="tpl-equipamento"> no index.html):
+     .product-card
+       .product-card__media      foto (fundo claro, imagem "contida")
+         .product-card__badges   selos: modalidade, destaque, "Em atualização"
+         .product-card__caption  "Imagem ilustrativa" (quando for o caso)
+       .product-card__body
+         .product-card__category
+         .product-card__title
+         .product-card__desc
+         .product-card__specs    características técnicas (dl rótulo/valor)
+         .product-card__note     aviso quando não há especificação confirmada
+         .product-card__footer   botão de consulta
+   Estado .is-placeholder: equipamento ainda não informado pelo cliente.
+   O card é um container (container queries): ele se ajusta à PRÓPRIA
+   largura, não à da tela, então funciona em qualquer grade.
+   ============================================ */
+
+.product-card {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xs);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Mídia ---------- */
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 60% at 50% 45%, var(--neutral-0), transparent 70%),
+    linear-gradient(180deg, var(--sky-50), var(--sky-100));
+}
+
+@media (min-width: 640px) {
+  .product-card__media { aspect-ratio: 4 / 3.4; }
+}
+
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-6) var(--space-8);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.product-card:hover .product-card__media img {
+  transform: scale(1.04);
+}
+
+.product-card__badges {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.product-card__caption {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  padding: 2px var(--space-2);
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.96); /* contraste AA garantido sobre a imagem */
+  border-radius: var(--radius-xs);
+}
+
+/* ---------- Corpo ---------- */
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .product-card__body { padding: var(--space-6); }
+}
+
+.product-card__category {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+}
+
+.product-card__title {
+  font-size: var(--fs-lg);
+}
+
+.product-card__desc {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Características técnicas: linhas rótulo → valor */
+.product-card__specs {
+  display: grid;
+  margin-top: var(--space-1);
+  font-size: var(--fs-sm);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.product-card__spec {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.product-card__spec dt {
+  color: var(--color-text-muted);
+}
+
+.product-card__spec dd {
+  font-weight: var(--fw-semibold);
+  color: var(--color-heading);
+  text-align: right;
+}
+
+.product-card__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-sm);
+}
+
+.product-card__note .icon {
+  color: var(--color-accent-strong);
+}
+
+.product-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+
+.product-card__footer .btn {
+  width: 100%;
+  white-space: normal;
+}
+
+/* ---------- Card estreito (colunas apertadas no tablet/celular) ---------- */
+
+@container (max-width: 340px) {
+  .product-card__body {
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .product-card__title {
+    font-size: var(--fs-md);
+  }
+
+  .product-card__footer .btn {
+    gap: var(--space-2);
+    padding-inline: var(--space-3);
+    font-size: var(--fs-sm);
+  }
+}
+
+/* ---------- Estado: equipamento ainda não informado ---------- */
+
+.product-card.is-placeholder .product-card__media img {
+  opacity: 0.85;
+}
+
+.product-card.is-placeholder .product-card__title {
+  color: var(--color-text);
+}

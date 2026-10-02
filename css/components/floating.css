@@ -1,0 +1,72 @@
+/* ============================================
+   Botão flutuante de WhatsApp
+   ============================================ */
+
+.whatsapp-float {
+  position: fixed;
+  right: max(var(--space-4), env(safe-area-inset-right));
+  bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  z-index: var(--z-floating);
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  color: var(--neutral-0);
+  background: var(--whatsapp);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 28px -6px rgba(37, 211, 102, 0.55);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out),
+    visibility 0s;
+}
+
+/* Oculto enquanto um CTA equivalente está na tela (js/modules/floating.js).
+   visibility também o tira da ordem de tabulação. */
+.whatsapp-float.is-hidden {
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out),
+    visibility 0s linear var(--dur-base);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+.whatsapp-float .icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Celular: um pouco menor e mais rente ao canto, cobrindo menos conteúdo */
+@media (max-width: 639.98px) {
+  .whatsapp-float {
+    right: max(var(--space-3), env(safe-area-inset-right));
+    bottom: max(var(--space-3), env(safe-area-inset-bottom));
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-float .icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Sai de cena com o menu mobile aberto, para não cobrir a gaveta */
+body.is-locked .whatsapp-float {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .whatsapp-float {
+    right: var(--space-8);
+    bottom: var(--space-8);
+  }
+}

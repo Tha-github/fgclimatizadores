@@ -1,0 +1,57 @@
+/* ============================================
+   FG Climatizadores — Folha de estilo principal
+   Único CSS carregado pelo HTML. Importa os módulos em ordem, cada um
+   dentro de uma camada (@layer). A ordem das camadas define quem vence
+   no conflito, independentemente da especificidade dos seletores:
+
+     settings → base → layout → components → sections → utilities
+     (mais fraca)                                         (mais forte)
+
+   Para criar uma seção nova: crie css/sections/<nome>.css e importe-o
+   no bloco "sections" abaixo.
+   ============================================ */
+
+@layer settings, base, layout, components, sections, utilities;
+
+/* Settings: só variáveis, não geram CSS visível */
+@import url("settings/tokens.css") layer(settings);
+
+/* Base: elementos HTML puros */
+@import url("base/fonts.css") layer(base);
+@import url("base/reset.css") layer(base);
+@import url("base/typography.css") layer(base);
+@import url("base/global.css") layer(base);
+
+/* Layout: estrutura e grids, sem aparência */
+@import url("layout/container.css") layer(layout);
+@import url("layout/section.css") layer(layout);
+@import url("layout/grid.css") layer(layout);
+
+/* Components: blocos reutilizáveis em qualquer seção */
+@import url("components/button.css") layer(components);
+@import url("components/eyebrow.css") layer(components);
+@import url("components/section-heading.css") layer(components);
+@import url("components/card.css") layer(components);
+@import url("components/product-card.css") layer(components);
+@import url("components/media.css") layer(components);
+@import url("components/form.css") layer(components);
+@import url("components/brand.css") layer(components);
+@import url("components/header.css") layer(components);
+@import url("components/footer.css") layer(components);
+@import url("components/floating.css") layer(components);
+@import url("components/lightbox.css") layer(components);
+
+/* Sections: estilos exclusivos de cada seção da página */
+@import url("sections/hero.css") layer(sections);
+@import url("sections/trust.css") layer(sections);
+@import url("sections/locacao.css") layer(sections);
+@import url("sections/venda.css") layer(sections);
+@import url("sections/equipamentos.css") layer(sections);
+@import url("sections/eventos.css") layer(sections);
+@import url("sections/sobre.css") layer(sections);
+@import url("sections/atendimento.css") layer(sections);
+@import url("sections/faq.css") layer(sections);
+@import url("sections/contato.css") layer(sections);
+
+/* Utilities: ajustes pontuais, vencem tudo */
+@import url("utilities/utilities.css") layer(utilities);

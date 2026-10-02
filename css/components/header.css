@@ -1,0 +1,441 @@
+/* ============================================
+   Topbar + Header + Navbar
+   - Topbar: contatos discretos. Só a partir de 1024px; rola junto com
+     a página (no mobile, os contatos ficam no rodapé da gaveta).
+   - Header: sticky no topo. Ganha borda e sombra ao rolar (.is-scrolled,
+     aplicado por js/modules/header.js). Altura fixa: nunca muda ao rolar,
+     então o conteúdo abaixo não "pula".
+   - Navbar: horizontal a partir de 1024px; abaixo disso vira gaveta
+     lateral controlada por js/modules/nav.js.
+   ============================================ */
+
+/* ---------- Topbar ---------- */
+
+.topbar {
+  display: none;
+  background: var(--color-surface-deep);
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 1024px) {
+  .topbar { display: block; }
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 40px;
+}
+
+.topbar__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+}
+
+.topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.topbar__item .icon {
+  color: var(--sky-300);
+}
+
+/* Entre 1024 e 1279px não cabe tudo: a região atendida sai da faixa
+   (continua no footer) e ficam horário, telefone, e-mail e redes */
+@media (max-width: 1279.98px) {
+  .topbar__list:first-child .topbar__item:nth-child(2) { display: none; }
+}
+
+.topbar__link,
+.topbar__icon-link {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+/* Área de clique confortável (≥ 24px) sem aumentar a faixa */
+.topbar__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+}
+
+.topbar__link:hover,
+.topbar__icon-link:hover {
+  color: var(--neutral-0);
+}
+
+.topbar__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-left: var(--space-4);
+  border-left: var(--border-width) solid var(--color-border-on-dark);
+}
+
+.topbar__icon-link {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  isolation: isolate;
+}
+
+/* Fundo translúcido em pseudo-elemento: backdrop-filter direto no header
+   criaria um novo bloco de contenção e quebraria a gaveta fixa do menu. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: var(--border-width) solid var(--color-border);
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+
+.site-header.is-scrolled::before {
+  box-shadow: var(--shadow-md);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--header-height);
+}
+
+/* Desktop: logo | menu centralizado no espaço livre | CTA */
+@media (min-width: 1024px) {
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-6);
+  }
+
+  .site-header__inner > .nav {
+    justify-self: center;
+  }
+}
+
+/* Páginas internas (ex.: política de privacidade): só logo + um botão */
+@media (min-width: 1024px) {
+  .site-header__inner--simple {
+    display: flex;
+  }
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------- CTA do header ----------
+   < 480px: oculto (a gaveta e o botão flutuante de WhatsApp assumem)
+   480–767px e 1024–1279px: rótulo curto "Orçamento"
+   768–1023px e ≥ 1280px: rótulo completo */
+
+.site-header__cta {
+  display: none;
+  min-height: 44px;
+}
+
+@media (min-width: 480px) {
+  .site-header__cta { display: inline-flex; }
+}
+
+.site-header__cta-long { display: none; }
+
+@media (min-width: 768px) and (max-width: 1023.98px), (min-width: 1280px) {
+  .site-header__cta-short { display: none; }
+  .site-header__cta-long  { display: inline; }
+}
+
+/* ---------- Botão do menu (hambúrguer / fechar) ---------- */
+
+.nav-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.nav-toggle:hover {
+  background: var(--color-surface-alt);
+  border-color: var(--color-border-strong);
+}
+
+@media (min-width: 1024px) {
+  .nav-toggle { display: none; }
+}
+
+/* ---------- Navbar: gaveta (mobile e tablet) ---------- */
+
+.nav {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: var(--z-drawer);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: min(100vw - var(--space-12), 400px);
+  padding: var(--space-4) var(--space-6) max(var(--space-6), env(safe-area-inset-bottom));
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-xl);
+  transform: translateX(100%);
+  visibility: hidden; /* fechada: fora da tabulação e do leitor de tela */
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    visibility 0s linear var(--dur-slow);
+}
+
+.nav.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    visibility 0s;
+}
+
+.nav__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: calc(var(--header-height) - var(--space-4));
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+/* Itens entram em cascata quando a gaveta abre */
+.nav__list > li {
+  opacity: 0;
+  transform: translateX(var(--space-6));
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+.nav.is-open .nav__list > li {
+  opacity: 1;
+  transform: none;
+}
+
+.nav.is-open .nav__list > li:nth-child(1) { transition-delay: 80ms; }
+.nav.is-open .nav__list > li:nth-child(2) { transition-delay: 120ms; }
+.nav.is-open .nav__list > li:nth-child(3) { transition-delay: 160ms; }
+.nav.is-open .nav__list > li:nth-child(4) { transition-delay: 200ms; }
+.nav.is-open .nav__list > li:nth-child(5) { transition-delay: 240ms; }
+.nav.is-open .nav__list > li:nth-child(6) { transition-delay: 280ms; }
+.nav.is-open .nav__list > li:nth-child(n + 7) { transition-delay: 320ms; }
+
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding-block: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-heading);
+  border-bottom: var(--border-width) solid var(--color-border);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+/* Marcador da seção ativa na gaveta: ponto azul à direita */
+.nav__link::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transform: scale(0);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--color-accent-strong);
+}
+
+.nav__link.is-active::after {
+  transform: scale(1);
+}
+
+.nav__link:focus-visible {
+  outline-offset: -2px;
+}
+
+.nav__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: auto;
+}
+
+.nav__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  list-style: none;
+}
+
+.nav__contact li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  overflow-wrap: anywhere;
+}
+
+/* O link ocupa a altura toda da linha: área de toque ≥ 44px */
+.nav__contact a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.nav__contact .icon {
+  color: var(--color-accent-strong);
+}
+
+.nav__contact a:hover {
+  color: var(--color-heading);
+}
+
+/* Fundo escurecido atrás da gaveta */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(5, 15, 34, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    visibility 0s linear var(--dur-slow);
+}
+
+.nav-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--dur-slow) var(--ease-out), visibility 0s;
+}
+
+/* ---------- Navbar: horizontal (desktop) ---------- */
+
+@media (min-width: 1024px) {
+  .nav {
+    position: static;
+    width: auto;
+    padding: 0;
+    overflow: visible;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .nav__head,
+  .nav__footer,
+  .nav-overlay {
+    display: none;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .nav__list > li {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nav__link {
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--color-text);
+    white-space: nowrap;
+    border-bottom: 0;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Indicador: barra azul que cresce do centro sob o link */
+  .nav__link::after {
+    position: absolute;
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: 4px;
+    width: auto;
+    height: 2px;
+    transform: scaleX(0);
+  }
+
+  .nav__link:hover {
+    color: var(--color-heading);
+  }
+
+  .nav__link:hover::after {
+    transform: scaleX(0.4);
+  }
+
+  .nav__link.is-active {
+    color: var(--color-heading);
+  }
+
+  .nav__link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav__link:focus-visible {
+    outline-offset: 2px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .nav__list { gap: var(--space-2); }
+  .nav__link { font-size: var(--fs-base); }
+}

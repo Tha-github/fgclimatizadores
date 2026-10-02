@@ -1,0 +1,341 @@
+/* ============================================
+   Sobre nós
+   Faixa 1 (.about__intro, fundo claro): composição assimétrica —
+     foto vertical + moldura deslocada + selo "15+ anos" + mini card do
+     equipamento — ao lado do texto institucional.
+   Faixa 2 (.about__values, fundo azul-marinho): título fixo à esquerda
+     e 6 diferenciais em grade escalonada à direita.
+   ============================================ */
+
+/* ---------- Faixa 1: apresentação ---------- */
+
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(var(--space-12), 2rem + 4vw, var(--space-20));
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .about__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+}
+
+/* Composição visual */
+.about__visual {
+  position: relative;
+  isolation: isolate; /* a moldura (z-index: -1) fica atrás da foto, não da seção */
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  padding: 0 var(--space-6) var(--space-10) 0;
+}
+
+/* Moldura azul-clara deslocada atrás da foto */
+.about__visual::before {
+  content: "";
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border: 2px solid var(--sky-200);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 100% 100%, var(--sky-100), transparent 60%);
+}
+
+.about__photo {
+  position: relative;
+  width: 84%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about__tag {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: 2px var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: var(--fw-medium);
+  color: var(--neutral-0);
+  background: rgba(5, 15, 34, 0.85);
+  border-radius: var(--radius-xs);
+}
+
+/* Selo de experiência — único número exibido, informado pelo cliente */
+.about__badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: min(78%, 300px);
+  padding: var(--space-5) var(--space-6);
+  color: var(--color-text-on-dark);
+  background: var(--gradient-brand);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.about__badge-number {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3rem);
+  font-weight: var(--fw-extrabold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--sky-300);
+}
+
+.about__badge-text {
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  color: var(--neutral-0);
+}
+
+/* Mini card do equipamento (ilustração), canto superior direito */
+.about__equip {
+  position: absolute;
+  top: var(--space-10);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 116px;
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  text-align: center;
+  color: var(--color-heading);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.about__equip img {
+  width: 64px;
+  height: auto;
+}
+
+/* Telas bem estreitas: o mini card sairia por cima do rosto da foto */
+@media (max-width: 379.98px) {
+  .about__equip { display: none; }
+}
+
+/* Texto */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.about__content .section-heading__title {
+  margin-bottom: var(--space-2);
+}
+
+.about__content p {
+  max-width: 60ch;
+}
+
+.about__lead {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--color-heading);
+}
+
+.about__audiences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  list-style: none;
+}
+
+.about__audiences li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-pill);
+}
+
+.about__actions {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 479.98px) {
+  .about__actions,
+  .about__actions .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Faixa 2: diferenciais ---------- */
+
+.about__values-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-10);
+}
+
+@media (min-width: 1024px) {
+  .about__values-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  /* Título acompanha a rolagem enquanto os cards passam */
+  .about__values-head {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-10));
+  }
+}
+
+.about__values-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.about__values-title {
+  font-size: var(--fs-2xl);
+  color: var(--neutral-0);
+}
+
+.about__values-lead {
+  color: var(--color-text-on-dark-muted);
+}
+
+.values {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  list-style: none;
+  counter-reset: valor;
+}
+
+@media (min-width: 560px) {
+  .values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Grade escalonada: a coluna da direita desce um pouco (assimetria) */
+@media (min-width: 1024px) {
+  .values {
+    gap: var(--space-5);
+    padding-bottom: var(--space-10);
+  }
+
+  .value:nth-child(even) {
+    transform: translateY(var(--space-10));
+  }
+}
+
+.value {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  counter-increment: valor;
+  background: rgba(255, 255, 255, 0.04);
+  border: var(--border-width) solid var(--color-border-on-dark);
+  border-radius: var(--radius-lg);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.value:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(134, 205, 239, 0.4);
+}
+
+/* Numeração discreta 01–06 no canto */
+.value::before {
+  content: counter(valor, decimal-leading-zero);
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: rgba(134, 205, 239, 0.5);
+}
+
+.value__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: var(--space-2);
+  color: var(--sky-300);
+  background: rgba(75, 179, 229, 0.14);
+  border-radius: var(--radius-md);
+}
+
+.value__title {
+  padding-right: var(--space-8); /* não encosta na numeração */
+  font-size: var(--fs-md);
+  color: var(--neutral-0);
+}
+
+.value__text {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Celular (< 560px): cards horizontais e compactos — ícone ao lado do texto */
+@media (max-width: 559.98px) {
+  .value {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    padding: var(--space-5);
+  }
+
+  .value__icon {
+    grid-row: span 2;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0;
+  }
+
+  .value__icon .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .value::before {
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+}

@@ -1,0 +1,89 @@
+/* ============================================
+   Estilos exclusivos de styleguide.html (documentação interna).
+   NÃO é importado pelo site, só pela página do guia.
+   ============================================ */
+
+@layer sections {
+  .sg-block + .sg-block {
+    margin-top: var(--space-16);
+  }
+
+  .sg-block > h2 {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-3);
+    font-size: var(--fs-xl);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .sg-label {
+    font-size: var(--fs-xs);
+    font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+    color: var(--color-text-muted);
+  }
+
+  .sg-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .sg-swatch {
+    overflow: hidden;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+  }
+
+  .sg-swatch__color {
+    height: 72px;
+  }
+
+  .sg-swatch__info {
+    padding: var(--space-3);
+  }
+
+  .sg-swatch__info strong {
+    display: block;
+    font-size: var(--fs-sm);
+  }
+
+  .sg-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .sg-type > * + * {
+    margin-top: var(--space-5);
+  }
+
+  .sg-space {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .sg-space__bar {
+    height: 12px;
+    background: var(--color-accent);
+    border-radius: var(--radius-xs);
+  }
+
+  .sg-box {
+    display: grid;
+    place-items: center;
+    width: 120px;
+    height: 88px;
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    font-size: var(--fs-xs);
+    text-align: center;
+  }
+
+  .sg-dark {
+    padding: var(--space-8);
+    background: var(--color-surface-dark);
+    border-radius: var(--radius-lg);
+  }
+}

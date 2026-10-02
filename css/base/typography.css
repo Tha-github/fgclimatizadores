@@ -1,0 +1,104 @@
+/* ============================================
+   Tipografia base
+   ============================================ */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-heading);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-4xl); line-height: var(--lh-tight); font-weight: var(--fw-extrabold); }
+h2 { font-size: var(--fs-3xl); line-height: var(--lh-tight); }
+h3 { font-size: var(--fs-xl); }
+h4 { font-size: var(--fs-lg); }
+h5 { font-size: var(--fs-md); }
+h6 { font-size: var(--fs-base); }
+
+p {
+  text-wrap: pretty;
+}
+
+/* Ajuste óptico do ponto final em títulos grandes: o ponto da Plus Jakarta
+   Sans tem ~0,12em de recuo interno à esquerda, que em corpo grande parece
+   um espaço. Uso: <span class="dot">.</span> */
+.dot {
+  margin-left: -0.08em;
+}
+
+strong,
+b {
+  font-weight: var(--fw-semibold);
+  color: var(--color-heading);
+}
+
+small {
+  font-size: var(--fs-sm);
+}
+
+/* Links dentro de texto corrido (os de componentes têm estilo próprio) */
+.prose a,
+p > a:not([class]) {
+  color: var(--color-accent-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.prose a:hover,
+p > a:not([class]):hover {
+  color: var(--color-primary);
+}
+
+/* Bloco de texto longo (políticas, descrições de produto) */
+.prose {
+  max-width: var(--measure);
+}
+
+.prose > * + * {
+  margin-top: var(--space-4);
+}
+
+.prose > h2,
+.prose > h3 {
+  margin-top: var(--space-10);
+}
+
+/* Em texto longo (ex.: política de privacidade), subtítulos menores */
+.prose > h2 { font-size: var(--fs-xl); }
+.prose > h3 { font-size: var(--fs-lg); }
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+}
+
+/* Inverte tipografia dentro de superfícies escuras */
+.on-dark,
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4,
+.on-dark strong {
+  color: var(--neutral-0);
+}
+
+.on-dark {
+  color: var(--color-text-on-dark);
+}

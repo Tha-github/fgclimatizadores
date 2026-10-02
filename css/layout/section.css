@@ -1,0 +1,45 @@
+/* ============================================
+   Section — bloco de página com ritmo vertical padrão
+   Variações de fundo trocam só a superfície; o conteúdo não muda.
+   ============================================ */
+
+.section {
+  position: relative;
+  padding-block: var(--section-space);
+}
+
+.section--compact { padding-block: var(--section-space-sm); }
+.section--flush-top { padding-top: 0; }
+.section--flush-bottom { padding-bottom: 0; }
+
+/* Superfícies */
+.section--alt   { background-color: var(--color-surface-alt); }
+.section--tint  { background-color: var(--color-surface-tint); }
+.section--sky   { background-image: var(--gradient-sky); }
+
+.section--dark {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-on-dark);
+}
+
+.section--brand {
+  background-image: var(--gradient-brand);
+  color: var(--color-text-on-dark);
+}
+
+/* Títulos e textos dentro de seções escuras */
+.section--dark :is(h1, h2, h3, h4, strong),
+.section--brand :is(h1, h2, h3, h4, strong) {
+  color: var(--neutral-0);
+}
+
+/* Espaço entre o cabeçalho da seção e o conteúdo */
+.section__header {
+  margin-bottom: clamp(var(--space-8), 1.5rem + 2vw, var(--space-16));
+}
+
+.section__footer {
+  margin-top: clamp(var(--space-8), 1.5rem + 2vw, var(--space-12));
+  display: flex;
+  justify-content: center;
+}

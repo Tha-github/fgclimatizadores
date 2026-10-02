@@ -1,0 +1,243 @@
+/* ============================================
+   FG Climatizadores — Design tokens
+   Fonte única de verdade para cor, tipografia, espaçamento, bordas,
+   sombras, movimento e camadas. Componentes NUNCA usam valores soltos:
+   sempre um token daqui.
+
+   Duas camadas de cor:
+   1. Primitivas (--navy-*, --sky-*, --neutral-*): a paleta crua.
+   2. Semânticas (--color-*): o PAPEL da cor. Componentes usam só estas,
+      então trocar a paleta não exige mexer em componente nenhum.
+   ============================================ */
+
+:root {
+  /* ---------- Primitivas: azul-marinho (marca, confiança) ---------- */
+  --navy-950: #050F22;
+  --navy-900: #0A1A36;
+  --navy-800: #0F2A52;
+  --navy-700: #163A6D;
+  --navy-600: #1F4C8A;
+
+  /* ---------- Primitivas: azul-claro (frescor, ar, destaque) ---------- */
+  --sky-50:  #F0F8FD;
+  --sky-100: #DDF0FA;
+  --sky-200: #BAE2F6;
+  --sky-300: #86CDEF;
+  --sky-400: #4BB3E5;
+  --sky-500: #1F98D3;
+  --sky-600: #13729F; /* azul de texto: contraste AA (≥ 4,5:1) sobre todos os fundos claros */
+  --sky-700: #12608A;
+
+  /* ---------- Primitivas: neutros (levemente frios, combinam com o azul) ---------- */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F6F8FB;
+  --neutral-100: #EDF1F6;
+  --neutral-200: #DCE3EC;
+  --neutral-300: #C3CEDB;
+  --neutral-400: #8E9CAF;
+  --neutral-500: #5F6F85; /* texto secundário: ≥ 4,5:1 sobre branco, cinza e azul-claro */
+  --neutral-600: #48566A;
+  --neutral-700: #334155;
+  --neutral-800: #1E293B;
+  --neutral-900: #0F172A;
+
+  /* ---------- Primitivas: feedback ---------- */
+  --green-600: #15803D;
+  --red-600:   #C0392B;
+  --whatsapp:  #25D366; /* uso exclusivo do botão de WhatsApp */
+  --whatsapp-hover: #1EBE5A;
+  --whatsapp-ink:   #062E16; /* texto sobre o verde do botão */
+  --whatsapp-strong: #0B7A3B; /* ícone sobre fundo claro */
+  --whatsapp-soft:  #DCF8E7;
+
+  /* ============================================
+     Cores semânticas
+     ============================================ */
+
+  /* Superfícies */
+  --color-bg:            var(--neutral-0);
+  --color-surface:       var(--neutral-0);
+  --color-surface-alt:   var(--neutral-50);   /* seções alternadas */
+  --color-surface-tint:  var(--sky-50);       /* seções com toque de azul */
+  --color-surface-dark:  var(--navy-900);     /* seções escuras, footer */
+  --color-surface-deep:  var(--navy-950);
+
+  /* Texto */
+  --color-heading:       var(--navy-900);
+  --color-text:          var(--neutral-700);
+  --color-text-muted:    var(--neutral-500);
+  --color-text-on-dark:  var(--neutral-100);
+  --color-text-on-dark-muted: #A9B8CD;
+
+  /* Marca */
+  --color-primary:       var(--navy-800);
+  --color-primary-hover: var(--navy-700);
+  --color-accent:        var(--sky-400);
+  --color-accent-hover:  var(--sky-300);
+  --color-accent-strong: var(--sky-600);      /* acento quando vira texto/link */
+  --color-accent-soft:   var(--sky-100);
+
+  /* Linhas e foco */
+  --color-border:        var(--neutral-200);
+  --color-border-strong: var(--neutral-300);
+  --color-border-on-dark: rgba(255, 255, 255, 0.12);
+  --color-focus:         var(--sky-600);      /* ≥ 4:1 sobre branco e sobre o azul-marinho */
+
+  /* Feedback */
+  --color-success: var(--green-600);
+  --color-error:   var(--red-600);
+
+  /* Gradientes de marca */
+  --gradient-brand: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 60%, var(--sky-600) 100%);
+  --gradient-sky:   linear-gradient(180deg, var(--sky-50) 0%, var(--neutral-0) 100%);
+
+  /* ============================================
+     Tipografia
+     Display: Plus Jakarta Sans — geométrica, moderna, boa presença em títulos.
+     Texto:   Inter — altíssima legibilidade em telas, em qualquer tamanho.
+     ============================================ */
+  --font-display: 'Plus Jakarta Sans', 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Escala fluida: cresce suavemente de 360px a 1280px de viewport,
+     sem precisar de media query para cada título. */
+  --fs-xs:   0.75rem;                                       /* 12 */
+  --fs-sm:   0.875rem;                                      /* 14 */
+  --fs-base: 1rem;                                          /* 16 */
+  --fs-md:   clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem);  /* 17 → 19 */
+  --fs-lg:   clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);    /* 19 → 22 */
+  --fs-xl:   clamp(1.375rem, 1.23rem + 0.65vw, 1.75rem);    /* 22 → 28 */
+  --fs-2xl:  clamp(1.75rem, 1.5rem + 1.1vw, 2.375rem);      /* 28 → 38 */
+  --fs-3xl:  clamp(2.125rem, 1.7rem + 1.9vw, 3.25rem);      /* 34 → 52 */
+  --fs-4xl:  clamp(2.5rem, 1.9rem + 2.7vw, 4.25rem);        /* 40 → 68 */
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-extrabold: 800;
+
+  --lh-tight: 1.1;
+  --lh-snug:  1.25;
+  --lh-base:  1.6;
+  --lh-loose: 1.75;
+
+  --ls-tight:  -0.025em;
+  --ls-normal: 0;
+  --ls-wide:   0.08em;   /* rótulos em caixa-alta (eyebrow) */
+
+  --measure: 65ch;       /* largura máxima confortável de parágrafo */
+
+  /* ============================================
+     Espaçamento — escala base 4px
+     ============================================ */
+  --space-1:  0.25rem;  /*  4 */
+  --space-2:  0.5rem;   /*  8 */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.25rem;  /* 20 */
+  --space-6:  1.5rem;   /* 24 */
+  --space-8:  2rem;     /* 32 */
+  --space-10: 2.5rem;   /* 40 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+  --space-20: 5rem;     /* 80 */
+  --space-24: 6rem;     /* 96 */
+  --space-32: 8rem;     /* 128 */
+
+  /* Ritmo de seção e calha lateral — fluidos */
+  --section-space: clamp(var(--space-16), 4rem + 3vw, var(--space-32));
+  --section-space-sm: clamp(var(--space-12), 2.5rem + 2vw, var(--space-20));
+  --gutter: clamp(var(--space-4), 0.5rem + 3vw, var(--space-10));
+  --grid-gap: clamp(var(--space-4), 0.75rem + 1.5vw, var(--space-8));
+
+  /* ============================================
+     Larguras de container
+     ============================================ */
+  --container-sm:  48rem;   /*  768 — textos, formulários */
+  --container-md:  64rem;   /* 1024 */
+  --container:     76rem;   /* 1216 — padrão do site */
+  --container-xl:  90rem;   /* 1440 — galerias, faixas largas */
+
+  /* ============================================
+     Breakpoints (referência)
+     Variáveis CSS não funcionam dentro de @media, então estes valores
+     são a convenção a seguir. Sempre mobile-first (min-width):
+       --bp-sm:  480px   celulares grandes
+       --bp-md:  768px   tablets
+       --bp-lg:  1024px  tablets deitados / notebooks pequenos
+       --bp-xl:  1280px  desktop
+       --bp-2xl: 1536px  telas largas
+     ============================================ */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+
+  /* ============================================
+     Bordas
+     ============================================ */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 999px;
+
+  --border-width: 1px;
+
+  /* ============================================
+     Sombras — tingidas de azul-marinho (mais naturais que preto puro)
+     ============================================ */
+  --shadow-xs: 0 1px 2px rgba(10, 26, 54, 0.06);
+  --shadow-sm: 0 2px 6px rgba(10, 26, 54, 0.06), 0 1px 2px rgba(10, 26, 54, 0.04);
+  --shadow-md: 0 10px 24px -6px rgba(10, 26, 54, 0.10), 0 2px 6px rgba(10, 26, 54, 0.05);
+  --shadow-lg: 0 24px 48px -12px rgba(10, 26, 54, 0.18);
+  --shadow-xl: 0 40px 80px -20px rgba(10, 26, 54, 0.28);
+  --shadow-accent: 0 12px 28px -8px rgba(31, 152, 211, 0.45);
+  --shadow-focus: 0 0 0 3px rgba(31, 152, 211, 0.35);
+
+  /* ============================================
+     Movimento
+     ============================================ */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 450ms;
+
+  /* ============================================
+     Camadas (z-index) — sempre por token, nunca número solto
+     ============================================ */
+  --z-base:     1;
+  --z-raised:   10;
+  --z-sticky:   100;
+  --z-header:   500;
+  --z-overlay:  800;
+  --z-drawer:   900;
+  --z-floating: 950;
+  --z-toast:    1000;
+
+  /* ============================================
+     Componentes globais
+     ============================================ */
+  --header-height: 72px;
+  --logo-height: 44px;   /* altura do logotipo no header; a largura acompanha a proporção original */
+  --trust-overlap: 72px; /* quanto o card de confiança sobe sobre o hero (≥ 768px) */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 84px;
+    --logo-height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

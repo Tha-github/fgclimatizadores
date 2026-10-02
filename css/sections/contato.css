@@ -1,0 +1,205 @@
+/* ============================================
+   Contato + CTA final
+   - Canais (.channel) à esquerda, formulário à direita (≥ 1024px).
+   - O formulário não envia nada a servidor: monta a mensagem e abre o
+     WhatsApp (js/modules/contact-form.js).
+   - .final-cta: faixa de conversão antes do rodapé.
+   ============================================ */
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-10);
+  }
+}
+
+/* ---------- Canais ---------- */
+
+.contact__channels {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.channel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.channel:hover {
+  border-color: var(--sky-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.channel__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-md);
+}
+
+.channel--whatsapp .channel__icon {
+  color: var(--whatsapp-strong);
+  background: var(--whatsapp-soft);
+}
+
+.channel__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  letter-spacing: 0;
+}
+
+.channel__value {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-heading);
+  overflow-wrap: break-word; /* o e-mail quebra no <wbr> após o @ */
+}
+
+.channel__value a:hover {
+  color: var(--color-accent-strong);
+}
+
+.channel--info {
+  background: var(--color-surface-tint);
+  border-style: dashed;
+  border-color: var(--sky-200);
+}
+
+/* Celular estreito: botão desce para baixo do texto */
+@media (max-width: 479.98px) {
+  .channel {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .channel__action {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  /* corpo menor para o e-mail caber inteiro numa linha */
+  .channel__value {
+    font-size: var(--fs-base);
+  }
+}
+
+/* ---------- Formulário ---------- */
+
+.contact__form-card {
+  padding: clamp(var(--space-6), 1rem + 2vw, var(--space-10));
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact__form-title {
+  font-size: var(--fs-xl);
+}
+
+.contact__form-text {
+  margin: var(--space-2) 0 var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.contact__submit {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.contact__submit .btn {
+  white-space: normal;
+}
+
+/* ---------- CTA final ---------- */
+
+.final-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.final-cta__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  max-width: calc(46rem + var(--gutter) * 2);
+}
+
+.final-cta__title {
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  color: var(--neutral-0);
+}
+
+.final-cta__text {
+  max-width: 36rem;
+  font-size: var(--fs-md);
+  color: var(--color-text-on-dark-muted);
+}
+
+.final-cta .btn {
+  margin-top: var(--space-3);
+  white-space: normal;
+}
+
+@media (max-width: 479.98px) {
+  .final-cta .btn { width: 100%; }
+}
+
+.final-cta__airflow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  fill: none;
+  stroke: var(--sky-300);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 2 12;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.final-cta__airflow path {
+  vector-effect: non-scaling-stroke;
+  animation: final-airflow 12s linear infinite;
+}
+
+.final-cta__airflow path:nth-child(2) { animation-duration: 16s; }
+.final-cta__airflow path:nth-child(3) { animation-duration: 20s; }
+
+@keyframes final-airflow {
+  to { stroke-dashoffset: -280; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .final-cta__airflow path { animation: none; }
+}

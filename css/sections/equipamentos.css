@@ -1,0 +1,129 @@
+/* ============================================
+   Equipamentos — catálogo
+   Cards gerados por js/modules/catalog.js a partir de
+   js/data/equipamentos.js (o componente visual é .product-card).
+   Grade: 1 coluna < 580px · 2 colunas até 1023px · 3 colunas ≥ 1024px.
+   minmax(0, 1fr): a coluna nunca cresce por causa do conteúdo do card.
+   Sem carrossel: todos os itens ficam visíveis na grade.
+   ============================================ */
+
+/* ---------- Filtro por modalidade ----------
+   Só aparece quando algum equipamento tem modalidade cadastrada. */
+
+.catalog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.catalog__filters[hidden] {
+  display: none;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.filter-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-chip[aria-pressed="true"] {
+  color: var(--neutral-0);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ---------- Grade ---------- */
+
+.catalog__grid {
+  display: grid;
+  gap: var(--space-5);
+  list-style: none;
+}
+
+@media (min-width: 580px) {
+  .catalog__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog__grid { gap: var(--grid-gap); }
+}
+
+@media (min-width: 1024px) {
+  .catalog__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.catalog__empty {
+  grid-column: 1 / -1;
+  padding: var(--space-10);
+  text-align: center;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 2px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- Rodapé do catálogo ---------- */
+
+.catalog__footer {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+  margin-top: clamp(var(--space-10), 1.5rem + 3vw, var(--space-16));
+  padding: clamp(var(--space-6), 1rem + 2vw, var(--space-10));
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+@media (min-width: 768px) {
+  .catalog__footer {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-10);
+  }
+}
+
+.catalog__footer-title {
+  font-size: var(--fs-xl);
+}
+
+.catalog__footer-text {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.catalog__footer .btn {
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .catalog__footer .btn { width: auto; }
+}
+
+.catalog__disclaimer {
+  margin-top: var(--space-5);
+  font-size: var(--fs-xs);
+  text-align: center;
+  color: var(--color-text-muted);
+}

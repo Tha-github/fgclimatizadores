@@ -1,0 +1,28 @@
+/* ============================================
+   Brand — logotipo da FG Climatizadores
+   REGRA: o logotipo original do cliente é usado como veio. Nada de
+   filtros, recolorização, distorção ou corte. Só a ALTURA é controlada
+   (--logo-height); a largura acompanha a proporção original.
+   ============================================ */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand__logo {
+  height: var(--logo-height);
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Fundos escuros (footer): se o cliente não tiver uma versão negativa
+   oficial do logo, ele é apoiado numa placa branca em vez de ser
+   recolorido. Com a versão negativa em mãos, basta remover a classe. */
+.brand--plate {
+  padding: var(--space-3) var(--space-4);
+  background: var(--neutral-0);
+  border-radius: var(--radius-md);
+}

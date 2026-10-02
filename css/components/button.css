@@ -1,0 +1,160 @@
+/* ============================================
+   Button
+   Uso: <a class="btn btn--primary">…</a>
+   Variações: --primary | --accent | --outline | --ghost | --light
+              --outline-light | --whatsapp
+   Tamanhos:  --sm | (padrão) | --lg      Largura: --block
+   ============================================ */
+
+.btn {
+  --btn-bg: transparent;
+  --btn-color: var(--color-heading);
+  --btn-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px; /* área de toque confortável no celular */
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--btn-color);
+  background-color: var(--btn-bg);
+  border: var(--border-width) solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Contorno sólido (contraste ≥ 3:1 em fundo claro e escuro), afastado
+   do botão para não se confundir com a borda */
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-pill);
+}
+
+.btn .icon {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* Seta "anda" no hover */
+.btn:hover .icon--arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Variações ---------- */
+
+.btn--primary {
+  --btn-bg: var(--color-primary);
+  --btn-color: var(--neutral-0);
+}
+
+.btn--primary:hover {
+  --btn-bg: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--accent {
+  --btn-bg: var(--color-accent);
+  --btn-color: var(--navy-950);
+}
+
+.btn--accent:hover {
+  --btn-bg: var(--color-accent-hover);
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--outline {
+  --btn-color: var(--color-primary);
+  --btn-border: var(--color-border-strong);
+}
+
+.btn--outline:hover {
+  --btn-border: var(--color-primary);
+  --btn-bg: var(--color-primary);
+  --btn-color: var(--neutral-0);
+}
+
+.btn--ghost {
+  --btn-color: var(--color-primary);
+  padding-inline: var(--space-2);
+}
+
+.btn--ghost:hover {
+  --btn-color: var(--color-accent-strong);
+  transform: none;
+}
+
+/* Para fundos escuros */
+.btn--light {
+  --btn-bg: var(--neutral-0);
+  --btn-color: var(--navy-900);
+}
+
+.btn--light:hover {
+  --btn-bg: var(--sky-100);
+}
+
+.btn--outline-light {
+  --btn-color: var(--neutral-0);
+  --btn-border: rgba(255, 255, 255, 0.35);
+}
+
+.btn--outline-light:hover {
+  --btn-bg: rgba(255, 255, 255, 0.1);
+  --btn-border: var(--neutral-0);
+}
+
+.btn--whatsapp {
+  --btn-bg: var(--whatsapp);
+  --btn-color: var(--whatsapp-ink);
+}
+
+.btn--whatsapp:hover {
+  --btn-bg: var(--whatsapp-hover);
+  box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.5);
+}
+
+/* ---------- Tamanhos ---------- */
+
+.btn--sm {
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--fs-sm);
+}
+
+.btn--lg {
+  min-height: 56px;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--fs-md);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Botão quadrado só com ícone (menu, fechar, setas de carrossel) */
+.btn--icon {
+  width: 48px;
+  min-height: 48px;
+  padding: 0;
+}

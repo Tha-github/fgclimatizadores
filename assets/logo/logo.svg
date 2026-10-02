@@ -1,0 +1,7 @@
+<!-- PROVISÓRIO — substituir pelo logotipo ORIGINAL da FG Climatizadores
+     (mesmo nome de arquivo, ou ajustar o src no HTML). Ver assets/logo/LEIA-ME.md -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" width="180" height="52" role="img" aria-label="Logotipo FG Climatizadores (provisório)">
+  <rect x="1" y="1" width="178" height="50" rx="8" fill="#F0F8FD" stroke="#86CDEF" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="90" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0F2A52">LOGO FG</text>
+  <text x="90" y="39" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#64748B">arquivo original do cliente</text>
+</svg>

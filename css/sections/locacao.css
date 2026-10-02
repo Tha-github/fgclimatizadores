@@ -1,0 +1,318 @@
+/* ============================================
+   Locação — serviço principal
+   - .occasion-card: card por ocasião (imagem + ícone + título + texto).
+     O card inteiro é clicável (o link "Consultar" se estica sobre ele).
+     Mobile (< 640px): card horizontal compacto, para a lista não ficar
+     longa demais. A partir de 640px: card vertical com imagem 4:3.
+   - .rental-cta: painel escuro de conversão, quebrando a sequência de
+     fundos claros dentro da seção.
+   ============================================ */
+
+/* ---------- Grade ---------- */
+
+.rental__grid {
+  display: grid;
+  gap: var(--space-4);
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .rental__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--grid-gap);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rental__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Card de ocasião ---------- */
+
+.occasion-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .occasion-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    border-radius: var(--radius-xl);
+  }
+}
+
+.occasion-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Foco do teclado no link → contorno no card inteiro */
+.occasion-card:has(.occasion-card__link:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.occasion-card__link:focus-visible {
+  outline: none;
+}
+
+.occasion-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-alt);
+}
+
+.occasion-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .occasion-card__media img {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Leve escurecimento na base da imagem */
+  .occasion-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(5, 15, 34, 0.35));
+    pointer-events: none;
+  }
+}
+
+.occasion-card:hover .occasion-card__media img {
+  transform: scale(1.05);
+}
+
+/* Ícone da ocasião: selo de vidro sobre a imagem (só no card vertical) */
+.occasion-card__icon {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .occasion-card__icon {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.occasion-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .occasion-card__body {
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+}
+
+.occasion-card__title {
+  font-size: var(--fs-md);
+}
+
+@media (min-width: 640px) {
+  .occasion-card__title { font-size: var(--fs-lg); }
+}
+
+.occasion-card__text {
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.occasion-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: auto;
+  padding-top: var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent-strong);
+}
+
+/* Estica a área clicável do link sobre o card todo */
+.occasion-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.occasion-card:hover .occasion-card__link .icon--arrow {
+  transform: translateX(3px);
+}
+
+.occasion-card__link .icon--arrow {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* ---------- Painel de conversão ---------- */
+
+.rental-cta {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: var(--space-8);
+  margin-top: clamp(var(--space-10), 1.5rem + 3vw, var(--space-16));
+  padding: clamp(var(--space-6), 1rem + 3vw, var(--space-12));
+  overflow: hidden;
+  color: var(--color-text-on-dark);
+  background: var(--gradient-brand);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Brilho azul-claro decorativo */
+.rental-cta::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  z-index: -1;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75, 179, 229, 0.35), transparent 65%);
+}
+
+@media (min-width: 1024px) {
+  .rental-cta {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: var(--space-12);
+  }
+}
+
+.rental-cta__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.rental-cta__title {
+  font-size: var(--fs-2xl);
+  color: var(--neutral-0);
+}
+
+.rental-cta__text {
+  max-width: 34rem;
+  color: var(--color-text-on-dark-muted);
+}
+
+.rental-cta__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  list-style: none;
+}
+
+.rental-cta__steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-0);
+  background: rgba(255, 255, 255, 0.06);
+  border: var(--border-width) solid var(--color-border-on-dark);
+  border-radius: var(--radius-pill);
+}
+
+.rental-cta__step-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--navy-950);
+  background: var(--color-accent);
+  border-radius: var(--radius-pill);
+}
+
+.rental-cta__step-icon .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.rental-cta__action {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.rental-cta__action .btn {
+  width: 100%;
+  white-space: normal;
+}
+
+/* Celular: painel e botão mais justos, para o rótulo caber numa linha
+   a partir de ~390px (em telas menores ele quebra centralizado) */
+@media (max-width: 479.98px) {
+  .rental-cta {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .rental-cta__action .btn {
+    gap: var(--space-2);
+    padding-inline: var(--space-4);
+    font-size: 0.9375rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  .rental-cta__action .btn {
+    width: auto;
+    align-self: flex-start;
+  }
+}
+
+.rental-cta__note {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: var(--color-text-on-dark-muted);
+}
+
+.rental-cta__note .icon {
+  margin-top: 1px;
+  color: var(--sky-300);
+}

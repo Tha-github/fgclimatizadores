@@ -1,0 +1,102 @@
+/* ============================================
+   Comportamentos globais
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  /* âncoras param abaixo do header fixo */
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  overflow-x: clip;
+}
+
+/* Animações decorativas pausadas fora da tela (js/modules/motion.js) */
+[data-anim].is-paused,
+[data-anim].is-paused * {
+  animation-play-state: paused !important;
+}
+
+/* Trava o scroll da página com o menu mobile aberto */
+body.is-locked {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--sky-200);
+  color: var(--navy-900);
+}
+
+/* Foco visível só para teclado — nunca removido */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* Seções recebem foco via JS ao navegar pelo menu (tabindex="-1"):
+   o leitor de tela acompanha, mas sem contorno em volta da seção inteira */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Link "pular para o conteúdo" — primeiro item tabulável da página */
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: var(--z-toast);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary);
+  color: var(--neutral-0);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-sm);
+  transform: translateY(-150%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Ícones do sprite SVG (ver <svg class="sprite"> no index.html) */
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.icon--sm { width: 1rem; height: 1rem; }
+.icon--lg { width: 1.5rem; height: 1.5rem; }
+.icon--xl { width: 2rem; height: 2rem; }
+
+.sprite {
+  display: none;
+}

@@ -1,0 +1,64 @@
+/* ============================================
+   Primitivas de layout
+   ============================================ */
+
+/* Grid automático: colunas se ajustam sozinhas ao espaço disponível.
+   Ajuste a largura mínima do card com --grid-min no próprio elemento. */
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min, 16rem), 100%), 1fr));
+}
+
+/* Grids de colunas fixas — mobile-first: 1 → 2 (md) → N (lg) */
+.grid--2,
+.grid--3,
+.grid--4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid--2,
+  .grid--3,
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Duas colunas texto + mídia (sobre, destaques comerciais) */
+.split {
+  display: grid;
+  gap: clamp(var(--space-8), 1rem + 4vw, var(--space-20));
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .split { grid-template-columns: 1fr 1fr; }
+  .split--wide-start { grid-template-columns: 1.2fr 1fr; }
+  .split--wide-end   { grid-template-columns: 1fr 1.2fr; }
+  .split--reverse > :first-child { order: 2; }
+}
+
+/* Pilha vertical com espaço uniforme entre filhos */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-4));
+}
+
+.stack--sm { --stack-gap: var(--space-2); }
+.stack--lg { --stack-gap: var(--space-8); }
+
+/* Linha que quebra quando falta espaço (botões, tags, ícones) */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cluster-gap, var(--space-3));
+}
+
+.cluster--center  { justify-content: center; }
+.cluster--between { justify-content: space-between; }

@@ -1,0 +1,7 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Estado local do scripts/definir-dominio.js
+scripts/.dominio-atual

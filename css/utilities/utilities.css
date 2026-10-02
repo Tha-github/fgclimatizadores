@@ -1,0 +1,43 @@
+/* ============================================
+   Utilitários — ajustes pontuais. Ficam na última camada, então
+   sempre vencem os componentes. Use com moderação: se uma combinação
+   se repete, ela merece virar componente.
+   ============================================ */
+
+/* Esconde visualmente, mas mantém para leitores de tela */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.text-center { text-align: center; }
+.text-muted  { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent-strong); }
+
+.mt-0  { margin-top: 0; }
+.mt-4  { margin-top: var(--space-4); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+
+.mx-auto { margin-inline: auto; }
+
+.w-full { width: 100%; }
+
+/* Ponto focal vertical de imagens recortadas (object-fit: cover) */
+.object-y-45 { object-position: 50% 45%; }
+.object-y-55 { object-position: 50% 55%; }
+.object-y-60 { object-position: 50% 60%; }
+.object-y-65 { object-position: 50% 65%; }
+
+/* Visibilidade por breakpoint (mobile-first) */
+@media (max-width: 767.98px)  { .hide-mobile  { display: none !important; } }
+@media (min-width: 768px)     { .show-mobile  { display: none !important; } }
+@media (max-width: 1023.98px) { .hide-tablet-down { display: none !important; } }
+@media (min-width: 1024px)    { .hide-desktop { display: none !important; } }

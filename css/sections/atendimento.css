@@ -1,0 +1,95 @@
+/* ============================================
+   Área de atendimento
+   Texto + CTA à esquerda; painel com as localidades à direita.
+   Fortaleza em destaque; "demais localidades" em estilo tracejado,
+   deixando claro que depende de consulta.
+   ============================================ */
+
+.coverage__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-10);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .coverage__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--space-16);
+  }
+}
+
+.coverage__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+@media (max-width: 479.98px) {
+  .coverage__content .btn { width: 100%; }
+}
+
+.coverage__panel {
+  position: relative;
+  padding: clamp(var(--space-5), 1rem + 2vw, var(--space-10));
+  background:
+    radial-gradient(80% 80% at 100% 0%, var(--sky-100), transparent 60%),
+    var(--color-surface-tint);
+  border: var(--border-width) solid var(--sky-100);
+  border-radius: var(--radius-xl);
+}
+
+.coverage__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .coverage__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.coverage__city {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  font-weight: var(--fw-semibold);
+  color: var(--color-heading);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.coverage__city .icon {
+  color: var(--color-accent-strong);
+}
+
+/* Fortaleza: ocupa a linha toda, em azul-marinho */
+.coverage__city--main {
+  grid-column: 1 / -1;
+  padding-block: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--neutral-0);
+  background: var(--gradient-brand);
+  border-color: transparent;
+}
+
+.coverage__city--main .icon {
+  color: var(--sky-300);
+}
+
+/* Demais localidades: sob consulta */
+.coverage__city--more {
+  grid-column: 1 / -1;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  background: transparent;
+  border: 2px dashed var(--sky-300);
+  box-shadow: none;
+}

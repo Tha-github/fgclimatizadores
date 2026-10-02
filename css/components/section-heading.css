@@ -1,0 +1,67 @@
+/* ============================================
+   Section heading — eyebrow + título + subtítulo
+   Uso padrão no topo de toda seção:
+   <header class="section-heading section__header">
+     <span class="eyebrow">…</span>
+     <h2 class="section-heading__title">…</h2>
+     <p class="section-heading__lead">…</p>
+   </header>
+   ============================================ */
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: 44rem;
+}
+
+.section-heading--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading__title {
+  font-size: var(--fs-3xl);
+}
+
+/* Destaque em azul dentro do título: <span class="highlight"> */
+.highlight {
+  color: var(--color-accent-strong);
+}
+
+.section--dark .highlight,
+.section--brand .highlight,
+.on-dark .highlight {
+  color: var(--sky-300);
+}
+
+.section-heading__lead {
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+  color: var(--color-text-muted);
+  max-width: var(--measure);
+}
+
+.section--dark .section-heading__lead,
+.section--brand .section-heading__lead {
+  color: var(--color-text-on-dark-muted);
+}
+
+/* Variante com ação à direita (ex.: "Ver catálogo completo") */
+.section-heading--split > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 44rem;
+}
+
+@media (min-width: 768px) {
+  .section-heading--split {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: none;
+  }
+}

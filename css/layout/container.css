@@ -1,0 +1,17 @@
+/* ============================================
+   Container — centraliza o conteúdo com calha lateral fluida
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--sm { max-width: calc(var(--container-sm) + var(--gutter) * 2); }
+.container--md { max-width: calc(var(--container-md) + var(--gutter) * 2); }
+.container--xl { max-width: calc(var(--container-xl) + var(--gutter) * 2); }
+
+/* Ocupa a largura toda, mantendo só a calha */
+.container--fluid { max-width: none; }
