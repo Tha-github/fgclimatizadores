@@ -43,13 +43,14 @@
 
 .hero__media picture,
 .hero__img {
+  display: block; /* <picture> é inline por padrão: sem isto, alguns navegadores não esticam a foto */
   width: 100%;
   height: 100%;
 }
 
 .hero__img {
   object-fit: cover;
-  object-position: 62% 40%;
+  object-position: left center; /* celular: foto alinhada pelo lado esquerdo */
   animation: hero-zoom 1.8s var(--ease-out) both;
 }
 
@@ -58,8 +59,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  -webkit-backdrop-filter: blur(1px);
-  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(0.5px); /* desfoque bem leve sobre a foto */
+  backdrop-filter: blur(0.5px);
   background:
     radial-gradient(90% 60% at 0% 100%, rgba(31, 152, 211, 0.28), transparent 70%),
     linear-gradient(180deg,
@@ -168,6 +169,12 @@
 
 /* Ajustes exclusivos para telas mobile */
 @media (max-width: 767.98px) {
+  /* Foto "como ela é": sem zoom de entrada e sem desfoque de fundo (alguns
+     navegadores espelham a imagem nas bordas ao aplicar backdrop-filter).
+     Fica só o gradiente azul por cima. */
+  .hero__img { animation: none; }
+  .hero__media::after { -webkit-backdrop-filter: none; backdrop-filter: none; }
+
   .hero__content { align-items: center; margin-inline: auto; text-align: center; }
   .hero__title, .hero__lead { width: 100%; text-align: center; }
   .hero__actions { flex-direction: column; align-items: center; width: min(100%, 24rem); margin-inline: auto; }
