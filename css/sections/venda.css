@@ -1,198 +1,62 @@
 /* ============================================
-   Venda — área secundária, sobre fundo escuro (.section--brand)
-   Texto + CTAs à esquerda; composição gráfica da marca à direita
-   (anéis de ar + ventilador). A composição é decorativa e só aparece
-   a partir de 768px, para não alongar a página no celular.
+   Venda — área secundária, fundo branco (cores padrão do site)
+   Conteúdo centralizado: título, texto, lista de pontos e CTA.
    ============================================ */
 
-/* As linhas de ar e os selos saem um pouco da coluna de propósito */
-.sale {
-  overflow: hidden;
-}
-
 .sale__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-12);
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .sale__inner {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: var(--space-16);
-  }
+  display: flex;
+  justify-content: center;
 }
 
 .sale__content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-5);
+  max-width: 54rem;
+  text-align: center;
+}
+
+.sale__content .section-heading__lead {
+  max-width: 44rem;
 }
 
 .sale__list {
-  display: grid;
-  gap: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3) var(--space-6);
+  font-weight: var(--fw-medium);
+  color: var(--color-heading);
   list-style: none;
 }
 
 .sale__list li {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
-  font-weight: var(--fw-medium);
-  color: var(--neutral-0);
+  gap: var(--space-2);
 }
 
+/* Check no mesmo estilo dos selos do site (azul-claro suave + azul-marinho) */
 .sale__list .icon {
-  display: grid;
   width: 24px;
   height: 24px;
   padding: 4px;
-  color: var(--navy-950);
-  background: var(--sky-300);
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
   border-radius: var(--radius-pill);
   stroke-width: 2.5;
 }
 
-.sale__actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  width: 100%;
-  margin-top: var(--space-3);
+.sale__buy {
+  min-width: min(100%, 22rem);
+  justify-content: center;
 }
 
-.sale__actions .btn {
-  width: 100%;
-  white-space: normal; /* telas de 320px: o rótulo pode quebrar */
-}
-
-@media (min-width: 480px) {
-  .sale__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: auto;
-  }
-
-  .sale__actions .btn {
-    width: auto;
-  }
-}
-
-/* ---------- Composição gráfica ---------- */
-
-.sale__visual {
-  display: none;
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 1;
-  margin-inline: auto;
-}
-
-@media (min-width: 768px) {
-  .sale__visual { display: block; }
-}
-
-.sale__rings span {
-  position: absolute;
-  border: var(--border-width) solid rgba(134, 205, 239, 0.22);
-  border-radius: 50%;
-  animation: sale-pulse 6s var(--ease-in-out) infinite;
-}
-
-.sale__rings span:nth-child(1) { inset: 0; }
-.sale__rings span:nth-child(2) { inset: 12%; border-style: dashed; animation-delay: 1s; }
-.sale__rings span:nth-child(3) { inset: 24%; animation-delay: 2s; }
-
-.sale__core {
-  position: absolute;
-  inset: 33%;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle at 30% 30%, rgba(134, 205, 239, 0.45), rgba(15, 42, 82, 0.9) 70%);
-  border: var(--border-width) solid rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
-  box-shadow:
-    0 0 80px rgba(75, 179, 229, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.sale__fan {
-  width: 52%;
-  height: 52%;
-  color: var(--neutral-0);
-  stroke-width: 1.25;
-  animation: sale-spin 14s linear infinite;
-}
-
-.sale__airflow {
-  position: absolute;
-  left: -12%;
-  right: -12%;
-  bottom: 6%;
-  width: 124%;
-  height: 30%;
-  fill: none;
-  stroke: var(--sky-300);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-dasharray: 2 12;
-  opacity: 0.5;
-}
-
-.sale__airflow path {
-  vector-effect: non-scaling-stroke;
-  animation: sale-airflow 10s linear infinite;
-}
-
-.sale__airflow path:nth-child(2) { animation-duration: 13s; }
-.sale__airflow path:nth-child(3) { animation-duration: 16s; opacity: 0.6; }
-
-.sale__chip {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--neutral-0);
-  background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: var(--border-width) solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-md);
-}
-
-.sale__chip .icon {
-  color: var(--sky-300);
-}
-
-.sale__chip--a { top: 14%; left: -2%; }
-.sale__chip--b { bottom: 30%; right: -4%; }
-
-@keyframes sale-spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes sale-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.55; transform: scale(1.02); }
-}
-
-@keyframes sale-airflow {
-  to { stroke-dashoffset: -280; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sale__rings span,
-  .sale__fan,
-  .sale__airflow path {
-    animation: none;
+@media (max-width: 479.98px) {
+  .sale__list {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 }

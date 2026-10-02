@@ -50,7 +50,7 @@ if (ordem) partes.push(ordem[0]);
 const imports = [...indice.matchAll(/@import\s+url\(\s*["']([^"']+)["']\s*\)\s*(?:layer\(([^)]+)\))?\s*;/g)];
 imports.forEach(([, arquivo, camada]) => {
   const caminho = path.join(path.dirname(ENTRADA), arquivo);
-  let css = removerComentarios(fs.readFileSync(caminho, 'utf8'));
+  let css = removerComentarios(fs.readFileSync(caminho, 'utf8').replace(/^﻿/, '')); // ignora BOM (marca invisível que alguns editores salvam no início)
   css = corrigirUrls(css, path.dirname(caminho));
   partes.push(camada ? `@layer ${camada.trim()}{${css}}` : css);
 });

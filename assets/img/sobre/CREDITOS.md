@@ -1,8 +1,7 @@
-# Seção Sobre: imagem PROVISÓRIA
+# Seção Sobre: imagem
 
-`sobre-evento-*`: mesas redondas com arranjos de flores sob tenda, foto de **Michael Kyule** no Unsplash (https://unsplash.com/photos/rJWykl03fbA).
-A licença é a Unsplash License: uso comercial gratuito. O arquivo foi recortado em 4:5.
+`sobre-climatizador-600.webp` e `sobre-climatizador-1000.webp` são **foto real fornecida pela FG Climatizadores**: um climatizador da empresa em funcionamento num evento.
 
-A foto **não mostra** a equipe nem os equipamentos da FG, e no site aparece com o selo "Imagem ilustrativa".
-O ideal é substituí-la por uma foto institucional real (equipe, equipamentos ou um evento atendido), mantendo os mesmos nomes de arquivo.
-Use o formato 4:5 vertical, com 600×750 e 1000×1250 px.
+O original está em `sobreclimatizador.jpeg`, com 1200×1600 px. As versões WebP foram geradas a partir dele, na proporção 3:4.
+
+Para trocar a foto, gere novas versões WebP de 600 e 1000 px, preferencialmente na proporção 3:4, mantendo os nomes de arquivo. Depois atualize o `alt` no `index.html`.

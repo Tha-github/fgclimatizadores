@@ -1,7 +1,6 @@
-/* ============================================
+﻿/* ============================================
    Hero — primeira dobra da home
    Imagem ampla de fundo + sobreposição azul-marinho para legibilidade +
-   linhas de fluxo de ar (elemento gráfico da marca).
    - Mobile: conteúdo empilhado na base, sobreposição vertical.
    - ≥ 768px: conteúdo à esquerda, sobreposição horizontal, e o card da
      faixa de confiança (trust.css) sobe sobre a base do hero.
@@ -59,6 +58,8 @@
   content: "";
   position: absolute;
   inset: 0;
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
   background:
     radial-gradient(90% 60% at 0% 100%, rgba(31, 152, 211, 0.28), transparent 70%),
     linear-gradient(180deg,
@@ -86,38 +87,7 @@
   }
 }
 
-/* ---------- Linhas de fluxo de ar ---------- */
-
-.hero__airflow {
-  display: none;
-  position: absolute;
-  right: 0;
-  bottom: calc(var(--trust-overlap) + var(--space-8));
-  z-index: -1;
-  width: min(58vw, 760px);
-  height: 160px;
-  fill: none;
-  stroke: var(--sky-300);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-dasharray: 2 12;
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-.hero__airflow path {
-  vector-effect: non-scaling-stroke;
-  animation: hero-airflow 9s linear infinite;
-}
-
-.hero__airflow path:nth-child(2) { animation-duration: 12s; opacity: 0.7; }
-.hero__airflow path:nth-child(3) { animation-duration: 15s; opacity: 0.45; }
-
-@media (min-width: 768px) {
-  .hero__airflow { display: block; }
-}
-
-/* ---------- Conteúdo ---------- */
+/* ---------- Conteudo ---------- */
 
 .hero__inner {
   width: 100%;
@@ -186,15 +156,20 @@
   to   { opacity: 1; transform: none; }
 }
 
-@keyframes hero-airflow {
-  to { stroke-dashoffset: -280; }
-}
 
 /* Movimento reduzido: sem zoom, sem subida e sem fluxo contínuo */
 @media (prefers-reduced-motion: reduce) {
   .hero__img,
-  .hero__content,
-  .hero__airflow path {
+  .hero__content {
     animation: none;
   }
+}
+
+
+/* Ajustes exclusivos para telas mobile */
+@media (max-width: 767.98px) {
+  .hero__content { align-items: center; margin-inline: auto; text-align: center; }
+  .hero__title, .hero__lead { width: 100%; text-align: center; }
+  .hero__actions { flex-direction: column; align-items: center; width: min(100%, 24rem); margin-inline: auto; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
 }

@@ -1,10 +1,6 @@
 // Preenche links e textos de contato a partir de FG.config
 //   data-whatsapp="mensagem opcional" → href wa.me (sem mensagem: usa a padrão)
-//   data-tel                          → href tel:
-//   data-tel-text                     → texto formatado do telefone
-//   data-email                        → href mailto: e texto
-//   data-email-link                   → só o href mailto: (mantém o texto)
-//   data-instagram                    → href do perfil (abre em nova aba)
+//   data-tel                          → href tel://   data-instagram                    → href do perfil (abre em nova aba)
 //   data-instagram-text               → texto "@usuario"
 //   data-horario                      → texto do horário de atendimento
 // O HTML já traz os valores escritos (funciona sem JS); o script só
@@ -48,7 +44,7 @@
   };
 
   function init() {
-    const { telefone, email, instagram, horario } = FG.config;
+    const { telefone, instagram, horario } = FG.config;
     const todos = (sel, fn) => document.querySelectorAll(sel).forEach(fn);
 
     todos('[data-whatsapp]', (el) => {
@@ -58,12 +54,6 @@
 
     todos('[data-tel]', (el) => { el.href = `tel:+${telefone.replace(/\D/g, '')}`; });
     todos('[data-tel-text]', (el) => { el.textContent = formatarTelefone(telefone); });
-
-    todos('[data-email]', (el) => {
-      el.href = `mailto:${email}`;
-      el.textContent = email;
-    });
-    todos('[data-email-link]', (el) => { el.href = `mailto:${email}`; });
 
     todos('[data-instagram]', (el) => {
       el.href = linkInstagram();

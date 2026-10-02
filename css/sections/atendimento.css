@@ -93,3 +93,11 @@
   border: 2px dashed var(--sky-300);
   box-shadow: none;
 }
+
+
+@media (max-width: 767.98px) {
+  .coverage__content { align-items: center; text-align: center; }
+  .coverage__content .section-heading__title,
+  .coverage__content .section-heading__lead { text-align: center; }
+  .coverage__content .btn { align-self: center; }
+}

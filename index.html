@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -53,7 +53,6 @@
     "image": "https://SEU-DOMINIO.com.br/assets/img/og-image.jpg",
     "description": "Locação e venda de climatizadores para eventos, empresas e residências.",
     "telephone": "+55-85-99921-0105",
-    "email": "fgclimatizadores@gmail.com",
     "sameAs": ["https://www.instagram.com/fgclimatizadores/"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -93,17 +92,13 @@
   <link rel="stylesheet" href="css/site.css">
 
   <!-- Imagem do hero: maior elemento da 1ª dobra, carregada com prioridade -->
-  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
-        imagesrcset="assets/img/hero/hero-evento-800.webp 800w, assets/img/hero/hero-evento-1400.webp 1400w, assets/img/hero/hero-evento-2200.webp 2200w"
-        imagesizes="100vw">
+  <link rel="preload" as="image" type="image/jpeg" href="assets/img/hero/banner.jpeg" fetchpriority="high">
 
   <script src="js/config.js" defer></script>
-  <script src="js/data/equipamentos.js" defer></script>
   <script src="js/modules/contact.js" defer></script>
   <script src="js/modules/header.js" defer></script>
   <script src="js/modules/nav.js" defer></script>
   <script src="js/modules/floating.js" defer></script>
-  <script src="js/modules/catalog.js" defer></script>
   <script src="js/modules/lightbox.js" defer></script>
   <script src="js/modules/contact-form.js" defer></script>
   <script src="js/modules/motion.js" defer></script>
@@ -121,7 +116,7 @@
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+
     <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
@@ -176,10 +171,6 @@
           <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"></use></svg>
           <a class="topbar__link" href="tel:+5585999210105" data-tel><span data-tel-text>(85) 99921-0105</span></a>
         </li>
-        <li class="topbar__item">
-          <svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"></use></svg>
-          <a class="topbar__link" href="mailto:fgclimatizadores@gmail.com" data-email>fgclimatizadores@gmail.com</a>
-        </li>
         <li class="topbar__social">
           <a class="topbar__icon-link" href="https://www.instagram.com/fgclimatizadores/" data-instagram aria-label="Instagram da FG Climatizadores (abre em nova aba)"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-instagram"></use></svg></a>
         </li>
@@ -194,12 +185,12 @@
   <header class="site-header" data-header>
     <div class="container site-header__inner">
       <a class="brand" href="#inicio" aria-label="FG Climatizadores — ir para o início">
-        <img class="brand__logo" src="assets/logo/logo.svg" alt="FG Climatizadores" width="180" height="52">
+        <img class="brand__logo" src="assets/logo/logo.png" alt="FG Climatizadores" width="180" height="52">
       </a>
 
       <nav class="nav" id="menu-principal" aria-label="Menu principal" data-nav>
         <div class="nav__head">
-          <img class="brand__logo" src="assets/logo/logo.svg" alt="" width="180" height="52">
+          <img class="brand__logo" src="assets/logo/logo.png" alt="" width="180" height="52">
           <button class="nav-toggle" type="button" aria-label="Fechar menu" data-nav-close>
             <svg class="icon icon--lg" aria-hidden="true"><use href="#i-close"></use></svg>
           </button>
@@ -210,10 +201,10 @@
         <ul class="nav__list" role="list">
           <li><a class="nav__link" href="#inicio">Início</a></li>
           <li><a class="nav__link" href="#locacao">Locação</a></li>
-          <li><a class="nav__link" href="#equipamentos">Equipamentos</a></li>
           <li><a class="nav__link" href="#eventos">Eventos</a></li>
           <li><a class="nav__link" href="#sobre">Sobre nós</a></li>
           <li><a class="nav__link" href="#contato">Contato</a></li>
+          <li><a class="nav__link" href="https://www.instagram.com/fgclimatizadores/" target="_blank" rel="noopener noreferrer" data-instagram>Instagram</a></li>
         </ul>
 
         <div class="nav__footer">
@@ -225,10 +216,6 @@
             <li>
               <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"></use></svg>
               <a href="tel:+5585999210105" data-tel><span data-tel-text>(85) 99921-0105</span></a>
-            </li>
-            <li>
-              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"></use></svg>
-              <a href="mailto:fgclimatizadores@gmail.com" data-email>fgclimatizadores@gmail.com</a>
             </li>
             <li>
               <svg class="icon icon--sm" aria-hidden="true"><use href="#i-instagram"></use></svg>
@@ -263,28 +250,13 @@
 
     <!-- ==================== HERO ==================== -->
     <section class="hero on-dark" id="inicio" aria-labelledby="hero-titulo">
-      <!-- Imagem de fundo. PROVISÓRIA (Unsplash, ver assets/img/hero/CREDITOS.md).
-           TROCAR AQUI: foto real dos climatizadores da FG em um evento,
-           mesmos nomes de arquivo. -->
+      <!-- Imagem de fundo: banner.jpeg. -->
       <div class="hero__media">
-        <picture>
-          <source type="image/webp"
-                  srcset="assets/img/hero/hero-evento-800.webp 800w,
-                          assets/img/hero/hero-evento-1400.webp 1400w,
-                          assets/img/hero/hero-evento-2200.webp 2200w"
-                  sizes="100vw">
-          <img class="hero__img" src="assets/img/hero/hero-evento-1400.jpg"
-               alt="Evento ao ar livre sob tenda, com mesa posta para os convidados"
-               width="1400" height="933" fetchpriority="high" decoding="async">
-        </picture>
+        <img class="hero__img" src="assets/img/hero/banner.jpeg" alt="Evento ao ar livre com climatizadores e mesas" width="1280" height="720" fetchpriority="high" decoding="async">
       </div>
 
-      <!-- Linhas de fluxo de ar: elemento gráfico decorativo da marca -->
-      <svg class="hero__airflow" data-anim viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 150 C 120 110, 220 190, 340 140 S 520 80, 600 110"/>
-        <path d="M0 178 C 140 140, 240 214, 360 168 S 530 112, 600 138"/>
-        <path d="M0 206 C 160 170, 260 236, 380 196 S 540 146, 600 166"/>
-      </svg>
+
+
 
       <div class="container hero__inner">
         <div class="hero__content">
@@ -305,7 +277,7 @@
               <svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
               Solicitar orçamento
             </a>
-            <a class="btn btn--outline-light btn--lg" href="#equipamentos">
+            <a class="btn btn--outline-light btn--lg" href="#locacao">
               Conhecer os climatizadores
               <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
             </a>
@@ -368,18 +340,11 @@
           </p>
         </header>
 
-        <!-- Imagens PROVISÓRIAS (Unsplash) — ver assets/img/locacao/CREDITOS.md.
-             Cada card inteiro é clicável e abre o WhatsApp já com o tipo de evento. -->
+        <!-- Cards por aplica??o, com ?cones e consulta pelo WhatsApp. -->
         <ul class="rental__grid" role="list">
           <li>
             <article class="occasion-card">
-              <div class="occasion-card__media">
-                <img src="assets/img/locacao/casamentos-640.webp"
-                     srcset="assets/img/locacao/casamentos-320.webp 320w, assets/img/locacao/casamentos-640.webp 640w, assets/img/locacao/casamentos-960.webp 960w"
-                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 112px"
-                     alt="" width="640" height="480" loading="lazy" decoding="async">
-                <span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span>
-              </div>
+              <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Casamentos</h3>
                 <p class="occasion-card__text">Climatização para cerimônias e recepções, pensada para o conforto de noivos e convidados.</p>
@@ -393,13 +358,7 @@
           </li>
           <li>
             <article class="occasion-card">
-              <div class="occasion-card__media">
-                <img src="assets/img/locacao/aniversarios-640.webp"
-                     srcset="assets/img/locacao/aniversarios-320.webp 320w, assets/img/locacao/aniversarios-640.webp 640w, assets/img/locacao/aniversarios-960.webp 960w"
-                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 112px"
-                     alt="" width="640" height="480" loading="lazy" decoding="async">
-                <span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-cake"></use></svg></span>
-              </div>
+              <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-cake"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Aniversários</h3>
                 <p class="occasion-card__text">Festas infantis, 15 anos e comemorações em família com um ambiente mais agradável.</p>
@@ -413,13 +372,7 @@
           </li>
           <li>
             <article class="occasion-card">
-              <div class="occasion-card__media">
-                <img src="assets/img/locacao/corporativos-640.webp"
-                     srcset="assets/img/locacao/corporativos-320.webp 320w, assets/img/locacao/corporativos-640.webp 640w, assets/img/locacao/corporativos-960.webp 960w"
-                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 112px"
-                     alt="" width="640" height="480" loading="lazy" decoding="async">
-                <span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"></use></svg></span>
-              </div>
+              <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Eventos corporativos</h3>
                 <p class="occasion-card__text">Feiras, palestras, treinamentos e confraternizações com mais conforto para equipes e clientes.</p>
@@ -433,13 +386,7 @@
           </li>
           <li>
             <article class="occasion-card">
-              <div class="occasion-card__media">
-                <img src="assets/img/locacao/buffets-640.webp"
-                     srcset="assets/img/locacao/buffets-320.webp 320w, assets/img/locacao/buffets-640.webp 640w, assets/img/locacao/buffets-960.webp 960w"
-                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 112px"
-                     alt="" width="640" height="480" loading="lazy" decoding="async">
-                <span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-utensils"></use></svg></span>
-              </div>
+              <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-utensils"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Buffets</h3>
                 <p class="occasion-card__text">Apoio a salões e espaços de festa que querem reforçar a climatização nos dias de evento.</p>
@@ -453,13 +400,7 @@
           </li>
           <li>
             <article class="occasion-card">
-              <div class="occasion-card__media">
-                <img src="assets/img/locacao/residencias-640.webp"
-                     srcset="assets/img/locacao/residencias-320.webp 320w, assets/img/locacao/residencias-640.webp 640w, assets/img/locacao/residencias-960.webp 960w"
-                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 112px"
-                     alt="" width="640" height="480" loading="lazy" decoding="async">
-                <span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg></span>
-              </div>
+              <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Residências</h3>
                 <p class="occasion-card__text">Reuniões em casa, áreas gourmet e espaços externos em dias de calor.</p>
@@ -473,13 +414,7 @@
           </li>
           <li>
             <article class="occasion-card">
-              <div class="occasion-card__media">
-                <img src="assets/img/locacao/outros-640.webp"
-                     srcset="assets/img/locacao/outros-320.webp 320w, assets/img/locacao/outros-640.webp 640w, assets/img/locacao/outros-960.webp 960w"
-                     sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 112px"
-                     alt="" width="640" height="480" loading="lazy" decoding="async">
-                <span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"></use></svg></span>
-              </div>
+              <div class="occasion-card__media"><span class="occasion-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"></use></svg></span></div>
               <div class="occasion-card__body">
                 <h3 class="occasion-card__title">Outros eventos</h3>
                 <p class="occasion-card__text">Formaturas, celebrações religiosas, eventos esportivos e outras ocasiões. Fale com a nossa equipe.</p>
@@ -520,136 +455,26 @@
     </section>
 
     <!-- ==================== VENDA (área secundária) ==================== -->
-    <section class="section section--brand sale" id="venda" aria-labelledby="venda-titulo">
+    <section class="section sale" id="venda" aria-labelledby="venda-titulo">
       <div class="container sale__inner">
         <div class="sale__content">
           <span class="eyebrow">Venda de climatizadores</span>
-          <h2 class="section-heading__title" id="venda-titulo">Prefere ter o seu <span class="highlight">próprio climatizador?</span></h2>
-          <p class="section-heading__lead">
-            Além da locação, a FG Climatizadores também trabalha com a venda de climatizadores.
-            Nossa equipe orienta você na escolha do modelo mais adequado ao seu espaço.
-          </p>
+          <h2 class="section-heading__title" id="venda-titulo">Prefere ter o seu <span class="highlight">pr&oacute;prio climatizador?</span></h2>
+          <p class="section-heading__lead">Al&eacute;m da loca&ccedil;&atilde;o, a FG Climatizadores tamb&eacute;m trabalha com a venda de climatizadores. Nossa equipe orienta voc&ecirc; na escolha do modelo mais adequado ao seu espa&ccedil;o.</p>
           <ul class="sale__list" role="list">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Orientação na escolha do modelo</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Orienta&ccedil;&atilde;o na escolha do modelo</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Equipamentos para diferentes ambientes</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Atendimento especializado</li>
           </ul>
-          <div class="sale__actions">
-            <a class="btn btn--accent btn--lg" href="#equipamentos">
-              Conhecer os equipamentos
-              <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
-            </a>
-            <a class="btn btn--outline-light btn--lg" href="https://wa.me/5585999210105"
-               data-whatsapp="Olá, FG Climatizadores! Tenho interesse em comprar um climatizador e gostaria de conhecer os modelos disponíveis.&#10;&#10;Cidade:&#10;Ambiente onde será usado:">
-              <svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
-              Consultar compra
-            </a>
-          </div>
-        </div>
-
-        <!-- Composição gráfica da marca (decorativa): anéis de ar + ventilador -->
-        <div class="sale__visual" aria-hidden="true" data-anim>
-          <div class="sale__rings">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="sale__core">
-            <svg class="icon sale__fan"><use href="#i-fan"></use></svg>
-          </div>
-          <svg class="sale__airflow" viewBox="0 0 400 120" preserveAspectRatio="none" focusable="false">
-            <path d="M0 40 C 80 10, 160 70, 240 40 S 360 10, 400 30"/>
-            <path d="M0 70 C 90 40, 170 100, 250 70 S 370 40, 400 60"/>
-            <path d="M0 100 C 100 70, 180 130, 260 100 S 380 70, 400 90"/>
-          </svg>
-          <span class="sale__chip sale__chip--a"><svg class="icon icon--sm"><use href="#i-tag"></use></svg>Venda</span>
-          <span class="sale__chip sale__chip--b"><svg class="icon icon--sm"><use href="#i-calendar"></use></svg>Locação</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== EQUIPAMENTOS (catálogo) ====================
-         Os cards são gerados por js/modules/catalog.js a partir de
-         js/data/equipamentos.js — é LÁ que se cadastram os modelos.
-         Itens provisórios aparecem com o selo "Em atualização" e sem
-         especificações (nada de dados técnicos fictícios). -->
-    <section class="section section--alt catalog" id="equipamentos" aria-labelledby="equipamentos-titulo">
-      <div class="container">
-        <header class="section-heading section-heading--center section__header">
-          <span class="eyebrow">Catálogo de equipamentos</span>
-          <h2 class="section-heading__title" id="equipamentos-titulo">Conheça nossas <span class="highlight">soluções em climatização<span class="dot">.</span></span></h2>
-          <p class="section-heading__lead">
-            Equipamentos modernos para atender diferentes necessidades. Consulte nossa equipe
-            para conhecer as opções disponíveis para locação ou compra.
-          </p>
-        </header>
-
-        <!-- Filtro: o JS só o exibe quando algum equipamento tem modalidade cadastrada -->
-        <div class="catalog__filters" role="group" aria-label="Filtrar equipamentos por modalidade" data-catalog-filtros hidden>
-          <button class="filter-chip" type="button" aria-pressed="true" data-filtro="todos">Todos</button>
-          <button class="filter-chip" type="button" aria-pressed="false" data-filtro="locacao">Locação</button>
-          <button class="filter-chip" type="button" aria-pressed="false" data-filtro="venda">Venda</button>
-        </div>
-        <p class="visually-hidden" aria-live="polite" data-catalog-status></p>
-
-        <ul class="catalog__grid" role="list" data-catalog-grid></ul>
-
-        <noscript>
-          <p class="catalog__empty">
-            Para ver o catálogo, ative o JavaScript do navegador ou
-            <a href="https://wa.me/5585999210105">fale com a nossa equipe pelo WhatsApp</a>.
-          </p>
-        </noscript>
-
-        <div class="catalog__footer">
-          <div>
-            <h3 class="catalog__footer-title">Não encontrou o que procura?</h3>
-            <p class="catalog__footer-text">Fale com a nossa equipe e conheça todas as opções disponíveis para locação ou compra.</p>
-          </div>
-          <a class="btn btn--whatsapp btn--lg" href="https://wa.me/5585999210105"
-             data-whatsapp="Olá, FG Climatizadores! Gostaria de conhecer os equipamentos disponíveis.&#10;&#10;Tenho interesse em: ( ) Locação  ( ) Compra&#10;Cidade:">
-            <svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
-            Falar com a equipe
+          <a class="btn btn--primary btn--lg sale__buy" href="https://wa.me/5585999210105?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20FG%20Climatizadores%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20para%20comprar%20um%20climatizador.">
+            COMPRAR CLIMATIZADOR
+            <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
           </a>
         </div>
-        <p class="catalog__disclaimer">Disponibilidade e especificações dos equipamentos são confirmadas no atendimento.</p>
       </div>
-
-      <!-- Estrutura de UM card de equipamento. Preenchida pelo catalog.js;
-           elementos sem dado correspondente são removidos. -->
-      <template id="tpl-equipamento">
-        <li>
-          <article class="product-card">
-            <div class="product-card__media">
-              <img data-img src="" alt="" width="600" height="600" loading="lazy" decoding="async">
-              <div class="product-card__badges" data-badges></div>
-              <span class="product-card__caption" data-caption>Imagem ilustrativa</span>
-            </div>
-            <div class="product-card__body">
-              <span class="product-card__category" data-categoria></span>
-              <h3 class="product-card__title" data-nome></h3>
-              <p class="product-card__desc" data-descricao></p>
-              <dl class="product-card__specs" data-specs></dl>
-              <p class="product-card__note" data-sem-specs>
-                <svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"></use></svg>
-                <span>Especificações técnicas sob consulta com a nossa equipe.</span>
-              </p>
-              <div class="product-card__footer">
-                <a class="btn btn--primary" href="https://wa.me/5585999210105" data-consultar>
-                  <svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
-                  Consultar informações<span class="visually-hidden" data-consultar-nome></span>
-                </a>
-              </div>
-            </div>
-          </article>
-        </li>
-      </template>
     </section>
 
-    <!-- ==================== EVENTOS (galeria) ====================
-         IMAGENS PROVISÓRIAS (Unsplash) identificadas como "Imagem ilustrativa".
-         NÃO são trabalhos da FG. Ver assets/img/galeria/CREDITOS.md para trocar
-         pelas fotos reais. Não citar clientes, locais ou eventos sem autorização.
-         Cada imagem abre ampliada (js/modules/lightbox.js); sem JS, o link
-         abre o arquivo da imagem diretamente. -->
+    <!-- ==================== EVENTOS ==================== -->
     <section class="section section--dark gallery-section" id="eventos" aria-labelledby="eventos-titulo">
       <div class="container">
         <header class="section-heading section-heading--center section__header">
@@ -658,106 +483,64 @@
           <p class="section-heading__lead">Conheça alguns ambientes e ocasiões em que a climatização faz a diferença.</p>
         </header>
 
-        <!-- Ordem dos itens = encaixe do mosaico. Desktop (4 col.): destaque 2×2 +
-             2 simples | faixa | 2 simples + faixa. Celular (2 col.): destaque,
-             par, faixa, par, faixa. Ao trocar fotos, mantenha os tipos nessa ordem. -->
         <ul class="gallery" role="list">
           <li class="gallery__item gallery__item--feature">
-            <a class="gallery__link" href="assets/img/galeria/galeria-01-1600.webp" data-lightbox="eventos" data-caption="Recepção ao ar livre" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-01-800.webp"
-                   srcset="assets/img/galeria/galeria-01-800.webp 800w, assets/img/galeria/galeria-01-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 600px, 100vw"
-                   alt="Recepção ao ar livre com mesas redondas sob tecidos suspensos que formam uma cobertura sobre o gramado" class="object-y-60"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Recepção ao ar livre</span>
+            <a class="gallery__link" href="assets/img/galeria/areaexterna.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/areaexterna.jpeg" alt="Recep&ccedil;&atilde;o ao ar livre com mesas e climatizadores em um espa&ccedil;o coberto" width="1280" height="960" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
           <li class="gallery__item">
-            <a class="gallery__link" href="assets/img/galeria/galeria-02-1600.webp" data-lightbox="eventos" data-caption="Jantar em salão" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-02-800.webp"
-                   srcset="assets/img/galeria/galeria-02-800.webp 800w, assets/img/galeria/galeria-02-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 300px, 50vw"
-                   alt="Convidados jantando em mesas compridas em um salão de eventos com luzes pendentes"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Jantar em salão</span>
+            <a class="gallery__link" href="assets/img/galeria/arlivre.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/arlivre.jpeg" alt="Mesas de evento montadas ao ar livre junto a um lago" width="1600" height="1200" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
           <li class="gallery__item">
-            <a class="gallery__link" href="assets/img/galeria/galeria-03-1600.webp" data-lightbox="eventos" data-caption="Banquete" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-03-800.webp"
-                   srcset="assets/img/galeria/galeria-03-800.webp 800w, assets/img/galeria/galeria-03-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 300px, 50vw"
-                   alt="Mesa comprida posta com louças e arranjos de flores em um salão com plantas"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Banquete</span>
+            <a class="gallery__link" href="assets/img/galeria/banquete.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/banquete.jpeg" alt="Mesa de banquete preparada em um sal&atilde;o com plantas" width="900" height="1600" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
           <li class="gallery__item gallery__item--wide">
-            <a class="gallery__link" href="assets/img/galeria/galeria-04-1600.webp" data-lightbox="eventos" data-caption="Evento corporativo" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-04-800.webp"
-                   srcset="assets/img/galeria/galeria-04-800.webp 800w, assets/img/galeria/galeria-04-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 600px, 100vw"
-                   alt="Plateia sentada assistindo a uma apresentação em um auditório" class="object-y-65"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Evento corporativo</span>
+            <a class="gallery__link" href="assets/img/galeria/eventos.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/eventos.jpeg" alt="Audit&oacute;rio preparado para uma apresenta&ccedil;&atilde;o" width="1280" height="720" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
           <li class="gallery__item">
-            <a class="gallery__link" href="assets/img/galeria/galeria-05-1600.webp" data-lightbox="eventos" data-caption="Área externa residencial" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-05-800.webp"
-                   srcset="assets/img/galeria/galeria-05-800.webp 800w, assets/img/galeria/galeria-05-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 300px, 50vw"
-                   alt="Gazebo de madeira com cortinas, sofás e luzes pendentes em um jardim ao entardecer" class="object-y-55"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Área externa residencial</span>
+            <a class="gallery__link" href="assets/img/galeria/casamento.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/casamento.jpeg" alt="Cerim&ocirc;nia ao ar livre com corredor entre fileiras de cadeiras" width="720" height="1280" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
           <li class="gallery__item">
-            <a class="gallery__link" href="assets/img/galeria/galeria-06-1600.webp" data-lightbox="eventos" data-caption="Confraternização" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-06-800.webp"
-                   srcset="assets/img/galeria/galeria-06-800.webp 800w, assets/img/galeria/galeria-06-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 300px, 50vw"
-                   alt="Grupo de pessoas reunidas e sorrindo durante uma festa ao ar livre" class="object-y-45"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Confraternização</span>
+            <a class="gallery__link" href="assets/img/galeria/festa.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/festa.jpeg" alt="Ambiente de festa ao ar livre entre plantas e mesas" width="2268" height="4032" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
-          <li class="gallery__item gallery__item--wide">
-            <a class="gallery__link" href="assets/img/galeria/galeria-07-1600.webp" data-lightbox="eventos" data-caption="Casamento" data-ilustrativa>
-              <img src="assets/img/galeria/galeria-07-800.webp"
-                   srcset="assets/img/galeria/galeria-07-800.webp 800w, assets/img/galeria/galeria-07-1600.webp 1600w"
-                   sizes="(min-width: 1024px) 600px, 100vw"
-                   alt="Salão decorado para casamento com arco de flores e cadeiras com capas brancas" class="object-y-55"
-                   width="800" height="533" loading="lazy" decoding="async">
-              <span class="gallery__tag" aria-hidden="true">Imagem ilustrativa</span>
-              <span class="gallery__caption" aria-hidden="true">Casamento</span>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/img/galeria/jantarsalao.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/jantarsalao.jpeg" alt="Jantar em jardim com mesas decoradas e climatizadores" width="1600" height="1200" loading="lazy" decoding="async">
+              <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
+              <span class="visually-hidden"> (ampliar imagem)</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/img/galeria/show.jpeg" data-lightbox="eventos">
+              <img src="assets/img/galeria/show.jpeg" alt="Espa&ccedil;o de evento com palco e climatizadores" width="1280" height="720" loading="lazy" decoding="async">
               <span class="gallery__zoom" aria-hidden="true"><svg class="icon icon--sm"><use href="#i-expand"></use></svg></span>
               <span class="visually-hidden"> (ampliar imagem)</span>
             </a>
           </li>
         </ul>
-        <p class="gallery__note">
-          <svg class="icon icon--sm" aria-hidden="true"><use href="#i-info"></use></svg>
-          Imagens ilustrativas de ambientes e ocasiões.
-        </p>
 
         <div class="gallery-cta">
           <p class="gallery-cta__title">Seu evento também merece esse cuidado.</p>
@@ -780,17 +563,16 @@
       <div class="section about__intro">
         <div class="container about__grid">
 
-          <!-- Composição visual. Foto PROVISÓRIA (Unsplash): ver
-               assets/img/sobre/CREDITOS.md. TROCAR AQUI por foto
-               institucional real (equipe, equipamentos ou evento atendido). -->
+          <!-- Composição visual: foto real de um climatizador da FG em evento
+               (assets/img/sobre/). Para trocar, gere as versões WebP de 600 e
+               1000 px em proporção 3:4 e atualize o alt. -->
           <div class="about__visual">
             <figure class="about__photo">
-              <img src="assets/img/sobre/sobre-evento-600.webp"
-                   srcset="assets/img/sobre/sobre-evento-600.webp 600w, assets/img/sobre/sobre-evento-1000.webp 1000w"
-                   sizes="(min-width: 1024px) 460px, (min-width: 640px) 60vw, 80vw"
-                   alt="Mesas redondas com toalhas claras e arranjos de flores coloridas montadas sob uma tenda para um evento"
-                   width="600" height="750" loading="lazy" decoding="async">
-              <span class="about__tag">Imagem ilustrativa</span>
+              <img src="assets/img/sobre/sobre-climatizador-600.webp"
+                   srcset="assets/img/sobre/sobre-climatizador-600.webp 600w, assets/img/sobre/sobre-climatizador-1000.webp 1000w"
+                   sizes="(min-width: 1024px) 405px, (min-width: 640px) 60vw, 80vw"
+                   alt="Climatizador da FG Climatizadores em funcionamento ao lado da mesa de doces de um evento, decorada com flores e uma torre de macarons"
+                   width="600" height="800" loading="lazy" decoding="async">
             </figure>
 
             <div class="about__badge">
@@ -945,7 +727,7 @@
             <summary class="faq-item__question">Como solicitar orçamento?<span class="faq-item__icon" aria-hidden="true"></span></summary>
             <div class="faq-item__answer">
               <p>Pelo WhatsApp <a href="https://wa.me/5585999210105" data-whatsapp="Olá, FG Climatizadores! Gostaria de solicitar um orçamento.&#10;&#10;Cidade:&#10;Data do evento:&#10;Tipo de evento:">(85) 99921-0105</a>. Informe a cidade, a data e o tipo de evento, e nossa equipe orienta você sobre as opções.</p>
-              <p>Você também pode falar com a gente pelo e-mail <a href="mailto:fgclimatizadores@gmail.com" data-email-link>fgclimatizadores@gmail.com</a> ou pelo Instagram <a href="https://www.instagram.com/fgclimatizadores/" data-instagram>@fgclimatizadores</a>.</p>
+              <p>Voc? tamb?m pode falar com a gente pelo Instagram <a href="https://www.instagram.com/fgclimatizadores/" data-instagram>@fgclimatizadores</a>.</p>
             </div>
           </details>
 
@@ -1013,16 +795,6 @@
               </div>
               <a class="btn btn--whatsapp btn--sm channel__action" href="https://wa.me/5585999210105" data-whatsapp>
                 Conversar<span class="visually-hidden"> pelo WhatsApp</span>
-              </a>
-            </li>
-            <li class="channel">
-              <span class="channel__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-mail"></use></svg></span>
-              <div class="channel__body">
-                <h3 class="channel__title">E-mail</h3>
-                <p class="channel__value">fgclimatizadores@<wbr>gmail.com</p>
-              </div>
-              <a class="btn btn--outline btn--sm channel__action" href="mailto:fgclimatizadores@gmail.com?subject=Contato%20pelo%20site" data-email-link>
-                Enviar<span class="visually-hidden"> e-mail</span>
               </a>
             </li>
             <li class="channel">
@@ -1116,11 +888,6 @@
 
     <!-- ==================== CTA FINAL ==================== -->
     <section class="section section--brand final-cta" aria-labelledby="cta-final-titulo">
-      <svg class="final-cta__airflow" data-anim viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 60 C 120 20, 220 100, 340 60 S 520 10, 600 40"/>
-        <path d="M0 95 C 140 55, 240 135, 360 95 S 530 45, 600 75"/>
-        <path d="M0 130 C 160 90, 260 170, 380 130 S 540 80, 600 110"/>
-      </svg>
       <div class="container final-cta__inner">
         <h2 class="final-cta__title" id="cta-final-titulo">Vamos planejar o conforto do seu próximo evento?</h2>
         <p class="final-cta__text">Conte para a gente a cidade, a data e o tipo de evento. A nossa equipe orienta você na escolha da melhor solução.</p>
@@ -1139,13 +906,12 @@
     <div class="container site-footer__main">
       <div class="site-footer__about">
         <a class="brand brand--plate" href="#inicio" aria-label="FG Climatizadores — voltar ao início">
-          <img class="brand__logo" src="assets/logo/logo.svg" alt="FG Climatizadores" width="180" height="52" loading="lazy">
+          <img class="brand__logo" src="assets/logo/logo.png" alt="FG Climatizadores" width="180" height="52" loading="lazy">
         </a>
         <p>Locação e venda de climatizadores para eventos, empresas e residências. Há mais de 15 anos levando conforto térmico a momentos especiais.</p>
         <ul class="social" role="list" aria-label="Redes e contato">
           <li><a class="social__link" href="https://www.instagram.com/fgclimatizadores/" data-instagram aria-label="Instagram da FG Climatizadores (abre em nova aba)"><svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg></a></li>
           <li><a class="social__link" href="https://wa.me/5585999210105" data-whatsapp aria-label="WhatsApp da FG Climatizadores (abre em nova aba)"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"></use></svg></a></li>
-          <li><a class="social__link" href="mailto:fgclimatizadores@gmail.com" data-email-link aria-label="Enviar e-mail para a FG Climatizadores"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg></a></li>
         </ul>
       </div>
 
@@ -1154,7 +920,6 @@
         <ul class="site-footer__list" role="list">
           <li><a href="#inicio">Início</a></li>
           <li><a href="#locacao">Locação</a></li>
-          <li><a href="#equipamentos">Equipamentos</a></li>
           <li><a href="#eventos">Eventos</a></li>
           <li><a href="#sobre">Sobre nós</a></li>
           <li><a href="#faq">Perguntas frequentes</a></li>
@@ -1177,7 +942,6 @@
         <h2 class="site-footer__title">Contato</h2>
         <ul class="site-footer__list" role="list">
           <li><svg class="icon icon--sm icon--fill" aria-hidden="true"><use href="#i-whatsapp"></use></svg><a href="https://wa.me/5585999210105" data-whatsapp><span data-tel-text>(85) 99921-0105</span></a></li>
-          <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"></use></svg><a href="mailto:fgclimatizadores@gmail.com" data-email>fgclimatizadores@gmail.com</a></li>
           <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-instagram"></use></svg><a href="https://www.instagram.com/fgclimatizadores/" data-instagram><span data-instagram-text>@fgclimatizadores</span></a></li>
           <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-clock"></use></svg><span data-horario>Todos os dias, das 08h às 22h</span></li>
           <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-map-pin"></use></svg><a href="#atendimento">Fortaleza e regiões do Ceará</a></li>
@@ -1187,7 +951,7 @@
 
     <div class="site-footer__bottom">
       <div class="container site-footer__bottom-inner">
-        <p>© <span data-year>2026</span> FG Climatizadores. Todos os direitos reservados.</p>
+        <p>&copy; 2026 FG Climatizadores | Todos os direitos reservados | Site Criado Por <a class="footer-credit" href="https://topsitebr.com.br/" target="_blank" rel="noopener noreferrer"><strong>Top Site</strong></a></p>
         <div class="site-footer__legal">
           <a href="politica-de-privacidade.html">Política de privacidade</a>
           <a class="site-footer__top" href="#inicio">
@@ -1218,9 +982,9 @@
     </div>
     <figure class="lightbox__figure">
       <img class="lightbox__img" src="data:," alt="" data-lightbox-img>
-      <figcaption class="lightbox__caption">
+      <figcaption class="lightbox__caption" hidden>
         <span data-lightbox-caption></span>
-        <span class="lightbox__tag" data-lightbox-tag>Imagem ilustrativa</span>
+        <span class="lightbox__tag" data-lightbox-tag></span>
       </figcaption>
     </figure>
     <button class="lightbox__btn lightbox__nav lightbox__nav--prev" type="button" aria-label="Imagem anterior" data-lightbox-prev>

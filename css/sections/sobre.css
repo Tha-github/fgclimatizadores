@@ -50,7 +50,7 @@
 .about__photo {
   position: relative;
   width: 84%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4; /* proporção da foto: mostra a cena inteira */
   overflow: hidden;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
@@ -63,17 +63,6 @@
   object-position: center;
 }
 
-.about__tag {
-  position: absolute;
-  top: var(--space-3);
-  left: var(--space-3);
-  padding: 2px var(--space-2);
-  font-size: 0.6875rem;
-  font-weight: var(--fw-medium);
-  color: var(--neutral-0);
-  background: rgba(5, 15, 34, 0.85);
-  border-radius: var(--radius-xs);
-}
 
 /* Selo de experiência — único número exibido, informado pelo cliente */
 .about__badge {
@@ -134,8 +123,8 @@
   height: auto;
 }
 
-/* Telas bem estreitas: o mini card sairia por cima do rosto da foto */
-@media (max-width: 379.98px) {
+/* Celular: o mini card encostaria no climatizador real da foto */
+@media (max-width: 639.98px) {
   .about__equip { display: none; }
 }
 
@@ -338,4 +327,16 @@
     top: var(--space-4);
     right: var(--space-4);
   }
+}
+
+
+@media (max-width: 767.98px) {
+  .about__content { align-items: center; text-align: center; }
+  .about__badge { text-align: center; }
+  .about__content .section-heading__title,
+  .about__content p { text-align: center; }
+  .about__audiences { justify-content: center; }
+  .about__actions { justify-content: center; }
+  .about__values-head { align-items: center; text-align: center; }
+  .about__values-title, .about__values-lead { text-align: center; }
 }

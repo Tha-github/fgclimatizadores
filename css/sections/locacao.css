@@ -3,7 +3,7 @@
    - .occasion-card: card por ocasião (imagem + ícone + título + texto).
      O card inteiro é clicável (o link "Consultar" se estica sobre ele).
      Mobile (< 640px): card horizontal compacto, para a lista não ficar
-     longa demais. A partir de 640px: card vertical com imagem 4:3.
+     longa demais. A partir de 640px: card vertical com ?cone em destaque.
    - .rental-cta: painel escuro de conversão, quebrando a sequência de
      fundos claros dentro da seção.
    ============================================ */
@@ -34,26 +34,16 @@
 .occasion-card {
   position: relative;
   display: grid;
-  grid-template-columns: 112px 1fr;
+  grid-template-columns: 112px minmax(0, 1fr);
   height: 100%;
   overflow: hidden;
   background: var(--color-surface);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xs);
-  transition:
-    transform var(--dur-base) var(--ease-out),
-    box-shadow var(--dur-base) var(--ease-out),
-    border-color var(--dur-base) var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
 }
 
-@media (min-width: 640px) {
-  .occasion-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    border-radius: var(--radius-xl);
-  }
-}
 
 .occasion-card:hover {
   transform: translateY(-4px);
@@ -71,61 +61,9 @@
   outline: none;
 }
 
-.occasion-card__media {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-surface-alt);
-}
-
-.occasion-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-
-@media (min-width: 640px) {
-  .occasion-card__media img {
-    aspect-ratio: 4 / 3;
-  }
-
-  /* Leve escurecimento na base da imagem */
-  .occasion-card__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(5, 15, 34, 0.35));
-    pointer-events: none;
-  }
-}
-
-.occasion-card:hover .occasion-card__media img {
-  transform: scale(1.05);
-}
-
-/* Ícone da ocasião: selo de vidro sobre a imagem (só no card vertical) */
-.occasion-card__icon {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .occasion-card__icon {
-    position: absolute;
-    top: var(--space-4);
-    left: var(--space-4);
-    z-index: 1;
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    color: var(--color-primary);
-    background: rgba(255, 255, 255, 0.9);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-  }
-}
+.occasion-card__media { display: grid; place-items: center; min-height: 112px; background: var(--color-surface-alt); }
+.occasion-card__icon { display: grid; place-items: center; width: 56px; height: 56px; color: var(--color-primary); background: var(--color-accent-soft); border-radius: var(--radius-lg); }
+.occasion-card__icon .icon { width: 28px; height: 28px; }
 
 .occasion-card__body {
   display: flex;
@@ -135,6 +73,11 @@
 }
 
 @media (min-width: 640px) {
+  .occasion-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: 112px 1fr;
+  }
+
   .occasion-card__body {
     gap: var(--space-3);
     padding: var(--space-6);
@@ -315,4 +258,15 @@
 .rental-cta__note .icon {
   margin-top: 1px;
   color: var(--sky-300);
+}
+
+
+@media (max-width: 767.98px) {
+  .rental-cta__content { align-items: center; text-align: center; }
+  .rental-cta__title, .rental-cta__text { text-align: center; }
+  .rental-cta__steps { justify-content: center; width: 100%; }
+  .rental-cta__steps li { justify-content: center; }
+  .rental-cta__action { align-items: center; text-align: center; }
+  .rental-cta__action .btn { align-self: center; }
+  .rental-cta__note { justify-content: center; max-width: 34rem; margin-inline: auto; text-align: center; }
 }
