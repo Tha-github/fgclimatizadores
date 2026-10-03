@@ -44,7 +44,7 @@
   };
 
   function init() {
-    const { telefone, instagram, horario } = FG.config;
+    const { telefone, email, instagram, horario } = FG.config;
     const todos = (sel, fn) => document.querySelectorAll(sel).forEach(fn);
 
     todos('[data-whatsapp]', (el) => {
@@ -54,6 +54,15 @@
 
     todos('[data-tel]', (el) => { el.href = `tel:+${telefone.replace(/\D/g, '')}`; });
     todos('[data-tel-text]', (el) => { el.textContent = formatarTelefone(telefone); });
+
+    todos('[data-email]', (el) => {
+      el.href = `mailto:${email}`;
+      el.textContent = email;
+    });
+    todos('[data-email-link]', (el) => {
+      const subject = el.href.includes('?') ? el.href.slice(el.href.indexOf('?')) : '';
+      el.href = `mailto:${email}${subject}`;
+    });
 
     todos('[data-instagram]', (el) => {
       el.href = linkInstagram();

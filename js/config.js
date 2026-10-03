@@ -16,6 +16,9 @@ window.FG.config = {
   // Telefone exibido e usado nos links tel: — o mesmo número do WhatsApp
   telefone: '5585999210105',
 
+  // E-mail de contato
+  email: 'fgclimatizadores@gmail.com',
+
   // Usuário do Instagram, sem @
   instagram: 'fgclimatizadores',
 
